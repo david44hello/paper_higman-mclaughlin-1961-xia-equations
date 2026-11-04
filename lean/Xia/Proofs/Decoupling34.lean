@@ -405,7 +405,7 @@ end GF
 
 /-! ## 6. Theorem 3.4(a) -/
 
-/-- Row 11a — Theorem 3.4(a) (s3_pow2.tex:107-108): `T(x) = ι x^q` is an `F_3`-linear involution of `V`; hence
+/-- Row 11a — Theorem 3.4(a) (s3_pow2.tex:106-107): `T(x) = ι x^q` is an `F_3`-linear involution of `V`; hence
 `V = V_+ ⊕ V_-`, and each of `V_+`, `V_-` is a line over `F_q` (closed under `F_q`-scalars, `q` elements). -/
 theorem thm_3_4_a_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) :
@@ -450,7 +450,7 @@ theorem thm_3_4_a_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e)
   · exact H8_smul_mem n hQ ξ0 c hc (-1) x ⟨hx.1, by rw [neg_one_mul]; exact hx.2⟩ |>.imp id
       (fun h => by rw [h, neg_one_mul])
 
-/-! ## 7. Theorem 3.4(d): the top-layer inverse Fourier transform `y^-_t(x)` (s3_pow2.tex:187-198) -/
+/-! ## 7. Theorem 3.4(d): the top-layer inverse Fourier transform `y^-_t(x)` (s3_pow2.tex:186-197) -/
 
 section Fourier
 
@@ -724,7 +724,7 @@ end Fourier
 
 /-! ## 8. Theorem 3.4(d) -/
 
-/-- Row 11d — Theorem 3.4(d) (s3_pow2.tex:117-118): for every `ν ∈ k_0` with `ν^{q-1} = -1`, `Λ_ν` is injective on
+/-- Row 11d — Theorem 3.4(d) (s3_pow2.tex:116-117): for every `ν ∈ k_0` with `ν^{q-1} = -1`, `Λ_ν` is injective on
 `V_+` and `Λ'_ν` on `V_-`; hence `x ↦ n^{-1}Λ_ν(x + Tx)` on `V` has kernel exactly `V_-`. -/
 theorem thm_3_4_d_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) (ν : GaloisField 3 (n / 2)) (hνk : ν ^ QQ n = ν) (hν : ν ^ (qq n - 1) = -1) :
@@ -788,9 +788,9 @@ theorem thm_3_4_d_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e)
   · have hp0 : x + Tmap n ξ0 x = 0 := by rw [h.2, add_neg_cancel]
     rw [hp0, H8_Lam_zero, mul_zero]
 
-/-! ## 9. The conic is not a product (P10s_main.tex:196-198) -/
+/-! ## 9. The conic is not a product (P10s_main.tex:205-206) -/
 
-/-- Coverage — P10s_main.tex:196-198 (review S2(a)): for `n = 2^e`, `e ≥ 5` odd, the points of a fibre form a conic in `V`
+/-- Coverage — P10s_main.tex:205-206 (review S2(a)): for `n = 2^e`, `e ≥ 5` odd, the points of a fibre form a conic in `V`
 (Thm 3.4(c)), not a product of a subset of `V_+` and a subset of `V_-`. -/
 theorem intro_conic_not_product_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (_heo : Odd e)
     (ξ0 : GaloisField 3 (n / 2)) (hξ0 : IsPrimitiveRoot ξ0 n) (ν : GaloisField 3 (n / 2)) (hν : ν ^ (qq n - 1) = -1) :

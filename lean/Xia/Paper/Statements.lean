@@ -47,6 +47,9 @@ import Xia.Proofs.EPow3
 import Xia.Proofs.SigmaOfN
 import Xia.Proofs.Sigma80
 import Xia.Proofs.Cor35Fibre
+import Xia.Proofs.R3
+import Xia.Proofs.Fig2
+import Xia.Proofs.NormLayers
 
 namespace Xia.Paper
 
@@ -60,7 +63,7 @@ theorem lem_2_2_fourth_power (n : ℕ) (h8 : 8 ∣ n) (hp : (pp n).Prime) :
     (∃ z : ZMod (pp n), z ^ 4 = 3) ↔ 3 ∣ n :=
   Xia.Proofs.lem_2_2_fourth_power_proved n h8 hp
 
-/-- Row 2b — Lemma 2.2, "Consequently" (s2_xia.tex:21-22, proof :35-41): let `n ≡ 8 (mod 24)` and `p` prime. Let `χ` be
+/-- Row 2b — Lemma 2.2, "Consequently" (s2_xia.tex:21-22, proof :35-42): let `n ≡ 8 (mod 24)` and `p` prime. Let `χ` be
 a multiplicative character on `F_p` of order `n` (`χ(g)` a primitive `n`-th root of unity for a generator `g`), with
 values in any field `M` (Xia: `M = ℂ_3`), `ϖ ∈ M` a primitive `n`-th root of unity and `σ` a positive divisor of `n`
 with `χ(3) = ϖ^σ` (Xia's `σ`, s2_xia.tex:15-17). Then `σ ≡ 2 (mod 4)`, and `σ = 2` when `n` is a power of `2`. -/
@@ -91,30 +94,30 @@ theorem sec_2_2_L2_iff (n : ℕ) [NeZero n] (hn : n % 24 = 8) (y : ZMod n → Ga
     L2 (-1) y ↔ Nm n (y 0) = -1 ∧ Nm n (y 1) = -1 :=
   Xia.Proofs.sec_2_2_L2_iff_proved n hn y h1
 
-/-- Row 3c — s2_xia.tex:59-60 (also P10s_main.tex:104): `R(-s) = R(s)`; (L3) gives `R(s) = 0` for every `s ≢ m`;
+/-- Row 3c — s2_xia.tex:59-60 (also P10s_main.tex:121-122): `R(-s) = R(s)`; (L3) gives `R(s) = 0` for every `s ≢ m`;
 (L2) gives `R(m) = ∑_t (-1) = -n`. (Any even `n`, any commutative ring.) -/
 theorem sec_2_2_R (n : ℕ) [NeZero n] (hn : Even n) {K : Type*} [CommRing K] (y : ZMod n → K) :
     (∀ s, R y (-s) = R y s) ∧ (L3 0 y → ∀ s, s ≠ half n → R y s = 0) ∧
       (L2 (-1) y → R y (half n) = -(n : K)) :=
   Xia.Proofs.sec_2_2_R_proved n hn y
 
-/-- Row 3d — s2_xia.tex:68 (also P10s_main.tex:109-111): for `n ≡ 8 (mod 24)`, every solution of (1) with `σ = 2`
+/-- Row 3d — s2_xia.tex:68 (also P10s_main.tex:126-127): for `n ≡ 8 (mod 24)`, every solution of (1) with `σ = 2`
 solves the norm-free system, and the solutions of (1) are exactly the norm-free solutions with `N(y_0) = N(y_1) = -1`. -/
 theorem sec_2_2_xia_eq (n : ℕ) [NeZero n] (hn : n % 24 = 8) :
     XiaSet n 2 ⊆ NFSet n 2 ∧ XiaSet n 2 = {y | y ∈ NFSet n 2 ∧ Nm n (y 0) = -1 ∧ Nm n (y 1) = -1} :=
   Xia.Proofs.sec_2_2_xia_eq_proved n hn
 
-/-- Row 27 — Theorem A, last sentence (P10s_main.tex:158-159; with s2_xia.tex:68): for `n ≡ 8 (mod 24)` and EVERY
+/-- Row 27 — Theorem A, last sentence (P10s_main.tex:154-155; with s2_xia.tex:60): for `n ≡ 8 (mod 24)` and EVERY
 divisor `σ` of `n`, every solution of Xia's system (1) with shift `σ` solves the norm-free system with shift `σ`. -/
 theorem xia_sub_nf (n : ℕ) [NeZero n] (hn : n % 24 = 8) (σ : ℕ) (hσ : σ ∣ n) : XiaSet n σ ⊆ NFSet n σ :=
   Xia.Proofs.xia_sub_nf_proved n hn σ hσ
 
-/-- Coverage — P10s_main.tex:104-108: `-n = 1` in `F_3` exactly when `n ≡ 2 (mod 3)`; so only then does summing (L2)
+/-- Coverage — P10s_main.tex:121-125: `-n = 1` in `F_3` exactly when `n ≡ 2 (mod 3)`; so only then does summing (L2)
 give `R(n/2) = 1`. -/
 theorem intro_sum_L2 (n : ℕ) : (-(n : ZMod 3) = 1) ↔ n % 3 = 2 :=
   Xia.Proofs.intro_sum_L2_proved n
 
-/-- Coverage — P10s_main.tex:162-164: deleting the norm equation leaves the trivial solution `y = 0` of (L1), (L3),
+/-- Coverage — P10s_main.tex:158-160: deleting the norm equation leaves the trivial solution `y = 0` of (L1), (L3),
 (L4); the consequence `R(n/2) = 1` excludes `y = 0`. -/
 theorem intro_zero (n σ : ℕ) [NeZero n] :
     (L1 3 (σ : ℤ) (0 : ZMod n → GaloisField 3 (n / σ)) ∧ L3 0 (0 : ZMod n → GaloisField 3 (n / σ)) ∧
@@ -158,7 +161,7 @@ theorem prop_2_4_more (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : 
       S y ^ 2 = (-1) ^ (n / 2) :=
   Xia.Proofs.prop_2_4_more_proved n hn h3 ω hω y hy
 
-/-- Coverage — s2_xia.tex:75, :76: the inversion formula `y_t = n^{-1} ∑_ξ ŷ(ξ) ξ^{-t}` (whenever `n` is invertible in
+/-- Coverage — s2_xia.tex:75, :77: the inversion formula `y_t = n^{-1} ∑_ξ ŷ(ξ) ξ^{-t}` (whenever `n` is invertible in
 `L`), and `S = ŷ(-1)`. -/
 theorem fourier_inversion (n : ℕ) [NeZero n] (hn : Even n) {L : Type*} [Field L] (ω : L) (hω : IsPrimitiveRoot ω n)
     (hnL : (n : L) ≠ 0) (y : ZMod n → L) :
@@ -193,7 +196,7 @@ theorem rem_2_6 (n : ℕ) [NeZero n] (h4 : 4 ∣ n) (h3 : ¬ 3 ∣ n) {L : Type*
 
 /-! ## Section 3.1 — n = 2^e: one parameter and two signs -/
 
-/-- Row 7a — Theorem 3.1 "fix `ξ_0 ∈ F` of order `n`" (s3_pow2.tex:11) with Step 1 (:31-32, `μ_n ⊂ k_0 ⊂ F`): for
+/-- Row 7a — Theorem 3.1 "fix `ξ_0 ∈ F` of order `n`" (s3_pow2.tex:11) with Step 1 (:20-21, `μ_n ⊂ k_0 ⊂ F`): for
 `n = 2^e`, `e ≥ 3`, `F` contains a primitive `n`-th root of unity, and every `n`-th root of unity in `F` lies in `k_0`
 (`ξ^Q = ξ`). -/
 theorem thm_3_1_xi0 (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) :
@@ -241,7 +244,7 @@ theorem thm_3_1_card (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) : N
     (fun ω hω => prop_2_4_bij n (Xia.Proofs.H4_even_of_pow2 hne he) (Xia.Proofs.H4_not3_of_pow2 hne) ω hω)
     (thm_3_1_step1 n e hne he) (thm_3_1_theta_set n e hne he)
 
-/-- Coverage — s3_pow2.tex:5-6 and :26: for `e ≥ 3`, `n = 2^e` lies in Xia's range `n ≡ 8 (mod 24)` exactly when `e` is
+/-- Coverage — s3_pow2.tex:5-6 and :71: for `e ≥ 3`, `n = 2^e` lies in Xia's range `n ≡ 8 (mod 24)` exactly when `e` is
 odd. -/
 theorem pow2_range (e : ℕ) (he : 3 ≤ e) : 2 ^ e % 24 = 8 ↔ Odd e :=
   Xia.Proofs.pow2_range_proved e he
@@ -266,7 +269,7 @@ theorem rem_3_3 (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (ξ0 : G
 
 /-! ## Section 3.2 — n = 2^e, e ≥ 4: the two norm conditions on the eigenspaces of T -/
 
-/-- Coverage — s3_pow2.tex:85-96 (set-up of Section 3.2), `n = 2^e`, `e ≥ 4`: `Q = q^2`; `ι` has order 4 and
+/-- Coverage — s3_pow2.tex:84-95 (set-up of Section 3.2), `n = 2^e`, `e ≥ 4`: `Q = q^2`; `ι` has order 4 and
 `ι^Q = ι`, `ι^9 = ι` (`ι ∈ F_9 ⊂ k_0`); `V` is closed under addition; the non-zero elements of `V` are exactly the
 parameters `θ` of Theorem 3.1; `q ≡ 1 (mod 4)`, so `ι^q = ι`; (eq:qmodn) `q ≡ 1 + n/2 (mod n)`; for a parameter `θ`
 and `ν := θ^{1+q}`: `ν^{q-1} = -1`, `ν^q = -ν`, `ν^Q = ν`; and `N(x) = (x^+)^2 - (x^-)^2` for `x ∈ F`. -/
@@ -282,7 +285,7 @@ theorem sec_3_2_setup (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (�
       ∀ x : GaloisField 3 (n / 2), Nm n x = yPlus n x ^ 2 - yMinus n x ^ 2 :=
   Xia.Proofs.sec_3_2_setup_proved n e hne he ξ0 hξ0
 
-/-- Row 11a — Theorem 3.4(a) (s3_pow2.tex:107-108): `T(x) = ι x^q` is an `F_3`-linear involution of `V`; hence
+/-- Row 11a — Theorem 3.4(a) (s3_pow2.tex:106-107): `T(x) = ι x^q` is an `F_3`-linear involution of `V`; hence
 `V = V_+ ⊕ V_-`, and each of `V_+`, `V_-` is a line over `F_q` (closed under `F_q`-scalars, `q` elements). -/
 theorem thm_3_4_a (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) :
@@ -295,7 +298,7 @@ theorem thm_3_4_a (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 :
       Nat.card (Vplus n ξ0) = qq n ∧ Nat.card (Vminus n ξ0) = qq n :=
   Xia.Proofs.thm_3_4_a_proved n e hne he ξ0 hξ0
 
-/-- Row 11b — Theorem 3.4(b) (s3_pow2.tex:109-112): for every solution, with `θ = ŷ(ξ_0)` and `ν = θ^{1+q}`,
+/-- Row 11b — Theorem 3.4(b) (s3_pow2.tex:108-111): for every solution, with `θ = ŷ(ξ_0)` and `ν = θ^{1+q}`,
 `y_0^- = n^{-1} Λ_ν(θ + Tθ)` and `y_1^- = n^{-1} Λ'_ν(θ - Tθ)`. -/
 theorem thm_3_4_b (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) (y : ZMod n → GaloisField 3 (n / 2)) (hy : y ∈ NFSet n 2) :
@@ -305,8 +308,8 @@ theorem thm_3_4_b (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 :
         Lam' n ξ0 (dft ξ0 y 1 ^ (1 + qq n)) (dft ξ0 y 1 - Tmap n ξ0 (dft ξ0 y 1)) :=
   Xia.Proofs.thm_3_4_b_proved n e hne he ξ0 hξ0 y hy
 
-/-- Row 11c — Theorem 3.4(c) (s3_pow2.tex:113-116) and its proof's identity (:176, :205): `θ^{1+q} = -ι θ T(θ)` for
-every `θ ∈ V`, i.e. `θ_+^2 - θ_-^2 = ιν` with `θ_± = (θ ± Tθ)/2 ∈ V_±` (and `θ + Tθ = -θ_+`, `θ - Tθ = -θ_-`, :122);
+/-- Row 11c — Theorem 3.4(c) (s3_pow2.tex:112-115) and its proof's identity (:175, :204): `θ^{1+q} = -ι θ T(θ)` for
+every `θ ∈ V`, i.e. `θ_+^2 - θ_-^2 = ιν` with `θ_± = (θ ± Tθ)/2 ∈ V_±` (and `θ + Tθ = -θ_+`, `θ - Tθ = -θ_-`, :121);
 `y_0^+`, `y_1^+` depend only on `(ν, S, ŷ(1))`; `y_0` only on `(ν, S, ŷ(1), θ_+)`, `y_1` only on `(ν, S, ŷ(1), θ_-)`;
 `T` sends parameters to parameters and keeps `ν`; `y_0(Tθ) = y_0(θ)` and `y_1(Tθ) = \overline{y_1(θ)}` (same signs). -/
 theorem thm_3_4_c (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
@@ -328,7 +331,7 @@ theorem thm_3_4_c (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 :
       y' 0 = y 0 ∧ y' 1 = bar n (y 1)) :=
   Xia.Proofs.thm_3_4_c_proved n e hne he ξ0 hξ0
 
-/-- Row 11d — Theorem 3.4(d) (s3_pow2.tex:117-118): for every `ν ∈ k_0` with `ν^{q-1} = -1`, `Λ_ν` is injective on
+/-- Row 11d — Theorem 3.4(d) (s3_pow2.tex:116-117): for every `ν ∈ k_0` with `ν^{q-1} = -1`, `Λ_ν` is injective on
 `V_+` and `Λ'_ν` on `V_-`; hence `x ↦ n^{-1}Λ_ν(x + Tx)` on `V` has kernel exactly `V_-`. -/
 theorem thm_3_4_d (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) (ν : GaloisField 3 (n / 2)) (hνk : ν ^ QQ n = ν) (hν : ν ^ (qq n - 1) = -1) :
@@ -336,7 +339,7 @@ theorem thm_3_4_d (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 :
       ∀ x ∈ Vsp n, ((n : GaloisField 3 (n / 2))⁻¹ * Lam n ξ0 ν (x + Tmap n ξ0 x) = 0 ↔ x ∈ Vminus n ξ0) :=
   Xia.Proofs.thm_3_4_d_proved n e hne he ξ0 hξ0 ν hνk hν
 
-/-- Row 12a — Corollary 3.5(i) (s3_pow2.tex:128-133): `n = 2^e`, `e ≥ 5` odd. Xia's system with `σ = 2` has a solution
+/-- Row 12a — Corollary 3.5(i) (s3_pow2.tex:127-132): `n = 2^e`, `e ≥ 5` odd. Xia's system with `σ = 2` has a solution
 iff there are `ν` with `ν^{q-1} = -1`, signs `S`, `ŷ(1)`, and `(θ_+, θ_-) ∈ V_+ × V_-` on the conic
 `θ_+^2 - θ_-^2 = ιν` with `N(y_0^+ + n^{-1}Λ_ν(-θ_+)) = -1` and `N(y_1^+ + n^{-1}Λ'_ν(-θ_-)) = -1`, where `y_0^+, y_1^+`
 are the values determined by `(ν, S, ŷ(1))` (those of any norm-free solution with these data). -/
@@ -350,7 +353,7 @@ theorem cor_3_5_i (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (heo :
           Nm n (yPlus n (y 1) + (n : GaloisField 3 (n / 2))⁻¹ * Lam' n ξ0 ν (-θm)) = -1 :=
   Xia.Proofs.cor_3_5_i_proved n e hne he heo ξ0 hξ0
 
-/-- Row 12b — Corollary 3.5(ii) (s3_pow2.tex:134-136): above each triple `(ν, S, ŷ(1))` Xia's system (`σ = 2`) has at
+/-- Row 12b — Corollary 3.5(ii) (s3_pow2.tex:133-135): above each triple `(ν, S, ŷ(1))` Xia's system (`σ = 2`) has at
 most 4 solutions; if it has any, they are the orbit `{±θ_+ ± θ_-}` of `⟨T, θ ↦ -θ⟩` (so 0, 2 or 4 of them); in total
 at most `16(q-1) = 16(3^{n/8}-1)` solutions. -/
 theorem cor_3_5_ii (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (heo : Odd e) (ξ0 : GaloisField 3 (n / 2))
@@ -365,7 +368,7 @@ theorem cor_3_5_ii (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (heo 
       Nat.card (XiaSet n 2) ≤ 16 * (qq n - 1) :=
   Xia.Proofs.cor_3_5_ii_proved n e hne he heo ξ0 hξ0
 
-/-- Row 13 — Remark 3.6(a),(b) (s3_pow2.tex:217-220): (a) `T(ξ_0^{-1}θ) = -ξ_0^{-1}Tθ` for `θ ∈ V`, so
+/-- Row 13 — Remark 3.6(a),(b) (s3_pow2.tex:216-219): (a) `T(ξ_0^{-1}θ) = -ξ_0^{-1}Tθ` for `θ ∈ V`, so
 `θ ↦ ξ_0^{-1}θ` maps `V_-` onto `V_+` (`e ≥ 4`); (b) for `n = 8`: `q = 3 ≢ 5 (mod 8)` and `T^2 = -1` on `V`. -/
 theorem rem_3_6 :
     (∀ (n e : ℕ) [NeZero n], n = 2 ^ e → 4 ≤ e → ∀ ξ0 : GaloisField 3 (n / 2), IsPrimitiveRoot ξ0 n →
@@ -385,7 +388,7 @@ theorem thm_4_1_pairs (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
       ∑ P ∈ topPairs n 3, pairLen P = n / 4 :=
   Xia.Proofs.thm_4_1_pairs_proved n a nodd hn ha hodd h3
 
-/-- Row 14e — proof of Theorem 4.1, Step 2 (s4_normfree.tex:73-77), algebraically closed `L` of characteristic 3: the top
+/-- Row 14e — proof of Theorem 4.1, Step 2 (s4_normfree.tex:79-83), algebraically closed `L` of characteristic 3: the top
 data `𝒟` ((F1) along each top orbit with its wrap, (F3) from `O` to `O^{-1}`) number `∏_i (3^{L_i}-1)`; so do the homogeneous
 top data `𝒟^0`, which form a group under pointwise multiplication. -/
 theorem thm_4_1_step2 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
@@ -396,7 +399,7 @@ theorem thm_4_1_step2 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
         l1 * l2 ∈ (topData0 n 3 : Set (ZMod n → L)) ∧ l1⁻¹ ∈ (topData0 n 3 : Set (ZMod n → L)) :=
   Xia.Proofs.thm_4_1_step2_proved n a nodd hn ha hodd h3 ω hω
 
-/-- Row 14f — proof of Theorem 4.1, Step 4 (s4_normfree.tex:91-101), layer 0: for a solution, with `f := ŷ|_{μ_{n_odd}}` and
+/-- Row 14f — proof of Theorem 4.1, Step 4 (s4_normfree.tex:97-107), layer 0: for a solution, with `f := ŷ|_{μ_{n_odd}}` and
 `P(α) := S ŷ(-α)`: `P(α) = ∏_{ρ ∈ 𝓛_a, ρ^{2^{a-1}} = -α} ŷ(ρ)` (so `P` does not depend on `S`) and (E1) `f(α^2) = P(α)f(α)`
 for every `α ∈ μ_{n_odd}`; `P(1) = 1`, `f(1) = ±1`; on `μ_{n_odd} ∖ {1}`: (E2) `f(α^3) = α^6 f(α)^3`, (E3)
 `f(α)f(α^{-1}) = α^m`, and `P(α^3) = α^6 P(α)^3`, `P(α)P(α^{-1}) = α^m`. -/
@@ -418,7 +421,7 @@ theorem thm_4_1_step4 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
     (prop_2_4_F1 n (Xia.Proofs.H9_even_halves hn (by omega)).1 h3 ω hω y) (prop_2_4_F3 n (Xia.Proofs.H9_even_halves hn (by omega)).1 h3 ω hω y)
     (prop_2_4_F4 n (Xia.Proofs.H9_even_halves hn (by omega)).1 h3 ω hω y)
 
-/-- Row 14g — proof of Theorem 4.1, Step 5 (s4_normfree.tex:103-115), algebraically closed `L` of characteristic 3: `G` is a
+/-- Row 14g — proof of Theorem 4.1, Step 5 (s4_normfree.tex:109-121), algebraically closed `L` of characteristic 3: `G` is a
 finite group under pointwise multiplication, `τ` is an automorphism of it; `G'` (= `G''` for `r = 3`) is a `G`-torsor and is
 non-empty; `f ↦ τf/f` maps `G'` into `G''`; for `P ∈ G''` and `f_0 ∈ G'`, the `f ∈ G'` with (E1) `f(α^2) = P(α)f(α)` exist iff
 `P ∈ G''_0 := (τf_0/f_0)(τ-1)G`, and then there are exactly `|G^τ|` of them (a `G^τ`-torsor). -/
@@ -438,7 +441,7 @@ theorem thm_4_1_step5 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
           Nat.card {g : ZMod n → L // g ∈ G ∧ τ g = g}) :=
   Xia.Proofs.thm_4_1_step5_proved n a nodd hn ha hodd h3 ω hω
 
-/-- Row 14h — proof of Theorem 4.1, Step 6 (s4_normfree.tex:117-133): `Π : 𝒟^0 → G`, `λ ↦ P_λ`, is a homomorphism onto `G`. -/
+/-- Row 14h — proof of Theorem 4.1, Step 6 (s4_normfree.tex:123-139): `Π : 𝒟^0 → G`, `λ ↦ P_λ`, is a homomorphism onto `G`. -/
 theorem thm_4_1_step6 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
     (∀ lam ∈ (topData0 n 3 : Set (ZMod n → L)), Pmap n a lam ∈ (Ggrp n a 3 : Set (ZMod n → L))) ∧
@@ -447,7 +450,7 @@ theorem thm_4_1_step6 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
     Set.SurjOn (Pmap n a) (topData0 n 3 : Set (ZMod n → L)) (Ggrp n a 3) :=
   Xia.Proofs.thm_4_1_step6_proved n a nodd hn ha hodd h3
 
-/-- Row 14i — proof of Theorem 4.1, Step 7 (s4_normfree.tex:135-140): `|(τ-1)G| · |G^τ| = |G|`, and
+/-- Row 14i — proof of Theorem 4.1, Step 7 (s4_normfree.tex:141-146): `|(τ-1)G| · |G^τ| = |G|`, and
 `|K_n| = 4 ∏_i (3^{L_i}-1)` for the group `K_n` of solutions of (h1), (h3), (h4) (algebraically closed `L`, char 3). -/
 theorem thm_4_1_step7 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
@@ -481,14 +484,14 @@ theorem cor_4_2 (n : ℕ) [NeZero n] (hn : n % 24 = 8) :
     ((XiaSet n 2).Nonempty ↔ ∃ y ∈ NFSet n 2, Nm n (y 0) = -1 ∧ Nm n (y 1) = -1) ∧ (NFSet n 2).Nonempty :=
   Xia.Proofs.cor_4_2_of n hn (fun a nodd h1 h2 h4 h5 => thm_4_1_count n a nodd h1 h2 h4 h5)
 
-/-- Row 16a — Proposition 4.3, even part (s4_normfree.tex:142-144): for an even divisor `σ` of `n`, the norm-free
+/-- Row 16a — Proposition 4.3, even part (s4_normfree.tex:148-150): for an even divisor `σ` of `n`, the norm-free
 system with shift `σ` has exactly `4 ∏_i (3^{L_i} - 1)` solutions. -/
 theorem prop_4_3_even (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     (σ : ℕ) (hσ : σ ∣ n) (hσe : Even σ) : Nat.card (NFSet n σ) = 4 * pairProd n 3 :=
   Xia.Proofs.prop_4_3_even_of n a nodd hn ha hodd h3 σ hσ hσe (thm_4_1_step2 n a nodd hn ha hodd h3)
     (thm_4_1_step5 n a nodd hn ha hodd h3) (thm_4_1_step6 n a nodd hn ha hodd h3) (thm_4_1_step7 n a nodd hn ha hodd h3)
 
-/-- Row 16b — Proposition 4.3, odd part (s4_normfree.tex:144, proof :156-157): for an odd divisor `σ` of `n`, the
+/-- Row 16b — Proposition 4.3, odd part (s4_normfree.tex:150, proof :163-164): for an odd divisor `σ` of `n`, the
 norm-free system with shift `σ` has no solution (the set is EMPTY). -/
 theorem prop_4_3_odd (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     (σ : ℕ) (hσ : σ ∣ n) (hσo : Odd σ) : NFSet n σ = ∅ :=
@@ -515,7 +518,7 @@ theorem thm_5_1_b (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 �
   Xia.Proofs.thm_5_1_b_proved n a nodd hn ha hodd h3
 
 /-- Row 18c (counting part) — Theorem 5.1(c) (s5_twonorms.tex:61-67) with the identification of fibres
-(:74-77, P10s_main.tex:191-192): every non-empty fibre has `Φ` elements, and there are
+(:74-77, P10s_main.tex:183-184): every non-empty fibre has `Φ` elements, and there are
 `|NF(n)|/Φ = 4 ∏_𝒜 (q_O-1) ∏_ℬ (q_O+1) ∏_𝒞 (3^L-1)` non-empty fibres. -/
 theorem thm_5_1_c_count (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)
     (h3 : ¬ 3 ∣ n) {L : Type*} [Field L] [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) :
@@ -541,7 +544,7 @@ theorem cor_5_2 (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L] [Al
 
 /-! ## Section 6 — other characteristics -/
 
-/-- Row 20a — s6_primes.tex:14-15 and the arithmetic of Proposition 6.1's proof (:35, :39): for `n = 2^e`, `e ≥ 3`
+/-- Row 20a — s6_primes.tex:14-15 and the arithmetic of Proposition 6.1's proof (:36, :40): for `n = 2^e`, `e ≥ 3`
 odd: `n ≡ 2` or `3 (mod 5)`, `n^2 ≡ -1`, `n^4 ≡ 1`, `p ≡ n (mod 5)`, so `p ≡ 2` or `3`, `5 ∤ pn`, `(p/5) = -1`; and
 `1 + (n-1)p = n^3`. -/
 theorem sec_6_1_arith (n e : ℕ) (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : Odd e) :
@@ -570,7 +573,7 @@ theorem sec_6_2_fourier (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) 
         dftA ω y (half n) = algebraMap _ L (S y) :=
   Xia.Proofs.H20_sec_6_2_fourier n e hne he heo ω hω
 
-/-- Row 21 — Theorem 6.2 (s6_primes.tex:65-69) with :71-73: `n = 2^e`, `e ≥ 3` odd, `Q_5 = 5^{n/4}`, `ξ_0 ∈ F_{5^n}` of
+/-- Row 21 — Theorem 6.2 (s6_primes.tex:65-69) with :72-74: `n = 2^e`, `e ≥ 3` odd, `Q_5 = 5^{n/4}`, `ξ_0 ∈ F_{5^n}` of
 order `n`, `ι_5 = ξ_0^{n/4}`: `y ↦ (ŷ(ξ_0), S, ŷ(1))` is a bijection from the norm-free system in characteristic `5` onto
 `{θ' : θ'^{Q_5-1} = -ι_5} × {S : S^2 = κ} × {n, -n}`; it has exactly `4(Q_5-1)` solutions; the first set has
 `Q_5 - 1` elements and the second lies in `F_25` (two elements). Also `F_{5^n}` contains such a `ξ_0`. -/
@@ -601,7 +604,7 @@ theorem sec_6_3_fourier (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2
       ∀ y ∈ NFrSet n r σr, S y ^ 2 = kappa n _ :=
   Xia.Proofs.sec_6_3_fourier_proved n a nodd r hn ha hodd hr σr ω hω
 
-/-- Row 24(pairs) — Theorem 6.4 = Theorem C (s6_primes.tex:138-146; P10s_main.tex:226-232): `n = 2^a n_odd`, `a ≥ 3`
+/-- Row 24(pairs) — Theorem 6.4 = Theorem C (s6_primes.tex:138-146; P10s_main.tex:216-222): `n = 2^a n_odd`, `a ≥ 3`
 (`3 ∣ n` allowed), `r` prime, `r ∤ pn`, `r ≢ -1 (mod 2^a)`, `σ_r` ANY integer. The orbits of `ξ ↦ ξ^r` on `𝓛_a` come in
 pairs `{O, O^{-1}}`, `O ≠ O^{-1}`, with `∑ L_i = n/4` [here; (i), (ii) are the next rows; `(-1)^{σ.natAbs} = (-1)^σ`
 since `|σ|` and `σ` have the same parity]; (i) if `(-1)^{σ_r} ≠ (p/r)` the norm-free system in characteristic `r` has no
@@ -761,7 +764,7 @@ theorem cor_6_5_solvable (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 
 
 /-! ## The main theorems of the introduction (restatements of body results) -/
 
-/-- Theorem A (P10s_main.tex:151-160) = Theorem 4.1 + Proposition 4.3 + row 27: for every even divisor `σ` of `n` the
+/-- Theorem A (P10s_main.tex:147-156) = Theorem 4.1 + Proposition 4.3 + row 27: for every even divisor `σ` of `n` the
 norm-free system with shift `σ` has exactly `4 ∏_i (3^{L_i}-1)` solutions, in particular one; for odd `σ` none; for
 `n ≡ 8 (mod 24)` every solution of Xia's system solves the norm-free system with the same `σ`. -/
 theorem thm_A (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n) :
@@ -770,7 +773,7 @@ theorem thm_A (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a)
       (n % 24 = 8 → ∀ σ : ℕ, σ ∣ n → XiaSet n σ ⊆ NFSet n σ) :=
   Xia.Proofs.thm_A_of n a nodd hn ha hodd h3 (fun σ hσ he => prop_4_3_even n a nodd hn ha hodd h3 σ hσ he)
 
-/-- Theorem C (P10s_main.tex:226-232) = Theorem 6.4 (i), (ii). -/
+/-- Theorem C (P10s_main.tex:216-222) = Theorem 6.4 (i), (ii). -/
 theorem thm_C (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)
     (hr : ¬ r ∣ pp n * n) (hr1 : r % 2 ^ a ≠ 2 ^ a - 1) (σr : ℤ) :
     ((-1 : ℤ) ^ σr.natAbs ≠ legendreSym r (pp n : ℤ) → NFrSet n r σr = ∅) ∧
@@ -779,7 +782,7 @@ theorem thm_C (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2 ^ a * nod
 
 /-! ## Printed claims that were split (one row per printed claim) and coverage links -/
 
-/-- Row 16 — Proposition 4.3 AS PRINTED (s4_normfree.tex:142-144) = rows 16a + 16b. -/
+/-- Row 16 — Proposition 4.3 AS PRINTED (s4_normfree.tex:148-150) = rows 16a + 16b. -/
 theorem prop_4_3 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     (σ : ℕ) (hσ : σ ∣ n) :
     (Even σ → Nat.card (NFSet n σ) = 4 * pairProd n 3) ∧ (Odd σ → NFSet n σ = ∅) :=
@@ -814,7 +817,7 @@ theorem cor_6_5 (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2 ^ a * n
   ⟨cor_6_5_sign n a nodd r hn ha hodd hp hr χ g hg hχg μ hμ σr hχr hX35r,
     cor_6_5_solvable n a nodd r hn ha hodd hp hr χ g hg hχg μ hμ σr hχr hX35r⟩
 
-/-- Coverage — s3_pow2.tex:88 (review N1): `V` has `Q = 3^{m/2}` elements (`F_3`-dimension `m/2`), `n = 2^e`, `e ≥ 4`. -/
+/-- Coverage — s3_pow2.tex:87 (review N1): `V` has `Q = 3^{m/2}` elements (`F_3`-dimension `m/2`), `n = 2^e`, `e ≥ 4`. -/
 theorem sec_3_2_V_card (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) :
     Nat.card (Vsp n : Set (GaloisField 3 (n / 2))) = QQ n :=
   Xia.Proofs.sec_3_2_V_card_proved n e hne he
@@ -835,7 +838,7 @@ theorem thm_6_2_sets (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (he
       (-ξ0 ^ (n / 4)) ^ 4 = 1 :=
   Xia.Proofs.thm_6_2_sets_proved n e hne he heo ξ0 hξ0
 
-/-- Coverage — P10s_main.tex:186, s5_twonorms.tex:22 (review S3(b)): in cases A and B the length `L` of `O` is even. -/
+/-- Coverage — P10s_main.tex:178, s5_twonorms.tex:22 (review S3(b)): in cases A and B the length `L` of `O` is even. -/
 theorem caseAB_even (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n) :
     ∀ O ∈ topOrbits n 3, IsCaseA O ∨ IsCaseB O → Even O.card :=
   Xia.Proofs.caseAB_even_proved n a nodd hn ha hodd h3
@@ -845,7 +848,7 @@ theorem fibre_not_linear (n : ℕ) [NeZero n] {L : Type*} [Field L] [Algebra (Ga
     (y : ZMod n → GaloisField 3 (n / 2)) : (0 : ZMod n → GaloisField 3 (n / 2)) ∉ fibre ω y :=
   Xia.Proofs.fibre_not_linear_proved n ω y
 
-/-- Coverage — P10s_main.tex:215-216 (review S2(a)): for `n = 2^e`, `e ≥ 5` odd, the points of a fibre form a conic in `V`
+/-- Coverage — P10s_main.tex:205-206 (review S2(a)): for `n = 2^e`, `e ≥ 5` odd, the points of a fibre form a conic in `V`
 (Thm 3.4(c)), not a product of a subset of `V_+` and a subset of `V_-`. -/
 theorem intro_conic_not_product (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (heo : Odd e)
     (ξ0 : GaloisField 3 (n / 2)) (hξ0 : IsPrimitiveRoot ξ0 n) (ν : GaloisField 3 (n / 2)) (hν : ν ^ (qq n - 1) = -1) :
@@ -909,7 +912,7 @@ theorem sec_4_1_homog (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : 
     {lam : ZMod n → L | H lam}.Finite :=
   Xia.Proofs.sec_4_1_homog_of_proved n hn h3 ω hω (prop_2_4_bij n hn h3 ω hω)
 
-/-- Row 14d — proof of Theorem 4.1, Step 3, equation (eq:descent) (s4_normfree.tex:79-89): for a solution and `ξ ∈ μ_n`
+/-- Row 14d — proof of Theorem 4.1, Step 3, equation (eq:descent) (s4_normfree.tex:85-95): for a solution and `ξ ∈ μ_n`
 of layer `j ≥ 1` (exponent model: `v_2(k) = a - j`), `ŷ(ξ) = S^{2^{a-j}-1} ∏_{ρ ∈ 𝓛_a, ρ^{2^{a-j}} = ξ} ŷ(ρ)`; and
 `ŷ(-1) = S`. -/
 theorem thm_4_1_descent (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)
@@ -933,7 +936,7 @@ theorem thm_6_2_step1 (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (h
       Disjoint (orbit 5 (1 : ZMod n)) (inv (orbit 5 1)) :=
   Xia.Proofs.thm_6_2_step1_proved n e hne he heo
 
-/-- Theorem B (P10s_main.tex:181-203), the parts not tied to `V`, `T`: the substitution is an involution of the
+/-- Theorem B (P10s_main.tex:174-195), the parts not tied to `V`, `T`: the substitution is an involution of the
 norm-free system; case B occurs only when `a = 3`, so `b = 0` when `16 ∣ n`; each fibre contains at most 4 solutions of
 Xia's system; Xia's system has at most `16 ∏_𝒜 (q_O-1) ∏_ℬ (q_O+1) ∏_𝒞 (3^L-1) ≤ 16 (4/3)^b 3^{n/8}` solutions; for
 `n = 2^e`, `e ≥ 5` odd, this bound is `16(3^{n/8}-1)`, compared with the `4(3^{n/4}-1)` norm-free solutions. (The `V`, `T`,
@@ -952,14 +955,14 @@ theorem thm_B_part (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L] 
     (fun a nodd hn' ha hodd h3 => Xia.Paper.thm_5_1_c_count n a nodd hn' ha hodd h3 ω hω)
     (fun a nodd hn' ha hodd h3 => Xia.Paper.thm_4_1_count n a nodd hn' ha hodd h3)
 
-/-- Row 17 (partial) — Remark 4.4 (s4_normfree.tex:161-166), `n = 80`: the top orbits form 5 pairs, each of length 4
+/-- Row 17 (partial) — Remark 4.4 (s4_normfree.tex:167-172), `n = 80`: the top orbits form 5 pairs, each of length 4
 (one pair over `α = 1`, four over `α ≠ 1`), so `|𝒟| = 80^5`, and the total is `4 · 80^5`. (The statements about `G`,
 `G^τ` and the extendable fraction are about objects inside the proof of Thm 4.1: PENDING with Steps 4-7.) -/
 theorem rem_4_4 : (topPairs 80 3).card = 5 ∧ (∀ P ∈ topPairs 80 3, pairLen P = 4) ∧ pairProd 80 3 = 80 ^ 5 ∧
     Nat.card (NFSet 80 2) = 4 * 80 ^ 5 :=
   Xia.Proofs.rem_4_4_of Xia.Paper.thm_4_1_count
 
-/-- Link L1 — after Corollary 3.5 (s3_pow2.tex:139-140): for `n = 32` the bound is `1280`, compared with `26240`
+/-- Link L1 — after Corollary 3.5 (s3_pow2.tex:138-139): for `n = 32` the bound is `1280`, compared with `26240`
 norm-free solutions; for `n = 128` it is `688 747 520`, compared with `7 412 080 755 407 360`. (Status follows
 Theorem 3.1 and Corollary 3.5(ii).) -/
 theorem link_L1 :
@@ -970,7 +973,7 @@ theorem link_L1 :
 
 /-! ## WAVE 3 — the remaining named steps, Section 5 in y-form, numeric links -/
 
-/-- Row 17b — Remark 4.4 (s4_normfree.tex:163-166), `n = 80`, `a = 4`, `n_odd = 5`: `|G| = 10`, `G^τ = {±1}` (2 elements),
+/-- Row 17b — Remark 4.4 (s4_normfree.tex:169-172), `n = 80`, `a = 4`, `n_odd = 5`: `|G| = 10`, `G^τ = {±1}` (2 elements),
 `(τ-1)G = {g : g^5 = 1}` (5 elements) (algebraically closed `L` of characteristic 3). -/
 theorem rem_4_4_G {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
     Nat.card (Ggrp 80 4 3 : Set (ZMod 80 → L)) = 10 ∧
@@ -1026,7 +1029,7 @@ theorem thm_5_1_c_yform (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha 
     (Xia.Paper.prop_2_4_bij n (Xia.Proofs.H19_even_of hn ha) h3 ω hω)
 
 /-- Row 18f — Theorem 5.1(d) and the matching sentences of Theorem B, in y-form (s5_twonorms.tex:68-70;
-P10s_main.tex:192-195): on a fibre, the `V_±`-components of a point are read through its top data,
+P10s_main.tex:184-187): on a fibre, the `V_±`-components of a point are read through its top data,
 `g_±(ρ) = ŷ(ρ) ± ŷ(-ρ)` (ρ ∈ 𝓛_a; `T` acts by `ŷ(ρ) ↦ ŷ(-ρ)`); then `y_0^-` depends only on `g_+` and `y_1^-` only on `g_-`,
 each injectively. (The form with `F_3`-linear maps `𝒴_0, 𝒴_1` on the whole space `V` is row thm_5_1_d_V, (N6).) -/
 theorem thm_5_1_d_yform (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)
@@ -1040,7 +1043,7 @@ theorem thm_5_1_d_yform (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha 
   Xia.Proofs.thm_5_1_d_yform_of n a nodd hn ha hodd h3 ω hω y hy
     (fun ω' hω' hnL z => Xia.Paper.fourier_inversion n (Xia.Proofs.H19_even_of hn ha) ω' hω' hnL z)
 
-/-- Coverage — Figure 1 caption (P10s_main.tex:136-142), y-form, `n ≡ 8 (mod 24)`: in a fibre at most two `V_+`-components
+/-- Coverage — Figure 1 caption (P10s_main.tex:133-139), y-form, `n ≡ 8 (mod 24)`: in a fibre at most two `V_+`-components
 occur at points with `N(y_0) = -1` and at most two `V_-`-components at points with `N(y_1) = -1`; `T` fixes `V_+` and negates
 `V_-`; (the solutions in a fibre form one orbit of `⟨T, v ↦ -v⟩`: Cor 5.2). -/
 theorem fig1_caption (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L] [Algebra (GaloisField 3 (n / 2)) L]
@@ -1114,7 +1117,7 @@ theorem link_L3 :
       Nat.card (NFSet 104 2) = 8988257288192 ∧ 16 * fibreProd 104 = 33918976) :=
   Xia.Proofs.link_L3_of Xia.Paper.thm_3_1_card Xia.Paper.thm_4_1_count
 
-/-- Coverage — P10s_main.tex:71-74: for `n = 2` (`p = 7`) and `n = 8` (`p = 73`) the subgroup `H` of
+/-- Coverage — P10s_main.tex:72-75: for `n = 2` (`p = 7`) and `n = 8` (`p = 73`) the subgroup `H` of
 order `n+1` of `F_p^×` (the `h` with `h^{n+1} = 1`) is a planar difference set: every non-zero element of `F_p` is `h - h'`
 with `h, h' ∈ H` in exactly one way. -/
 theorem intro_planar_2_8 :
@@ -1154,7 +1157,7 @@ theorem prop_6_1 (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : 
     Plane → (Xia5Set n).Nonempty :=
   Xia.Proofs.prop_6_1_proved n e hne he heo Plane hX12 hX41 χ g hg hχg hX35 hX34b
 
-/-- Row 11e — equation (eq:top-all-V) (s3_pow2.tex:169-174), `n = 2^e`, `e ≥ 4`: for `ν` with `ν^{q-1} = -1` and every `x ∈ V`,
+/-- Row 11e — equation (eq:top-all-V) (s3_pow2.tex:168-173), `n = 2^e`, `e ≥ 4`: for `ν` with `ν^{q-1} = -1` and every `x ∈ V`,
 with `h_x(ξ_0^{3^k}) := ξ_0^{2k3^k} x^{3^k}` and `h_x(ξ_0^{-3^k}) := -ξ_0^{-2k3^k} ν^{-3^k} x^{q3^k}` on `O ∪ O^{-1}`
 (`k < m/2`): `n^{-1} ∑ h_x(ξ) = n^{-1} Λ_ν(x + Tx)` and `n^{-1} ∑ h_x(ξ) ξ^{-1} = n^{-1} Λ'_ν(x - Tx)`; and for a parameter
 `θ` with `θ^{1+q} = ν`, `h_θ = ŷ` on `O ∪ O^{-1}` (any solution `y` with `ŷ(ξ_0) = θ`). -/
@@ -1175,7 +1178,7 @@ theorem eq_top_all_V (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ
 
 /-! ## Remark 4.4's other printed numbers (claim 17N), two printed facts, number facts added in v1.90 -/
 
-/-- Row rem_4_4_N1 — Remark 4.4 (s4_normfree.tex:162-163): "Here `a = 4` and `n_odd = 5`; ... Over `α = 1` there are two
+/-- Row rem_4_4_N1 — Remark 4.4 (s4_normfree.tex:168-169): "Here `a = 4` and `n_odd = 5`; ... Over `α = 1` there are two
 top orbits of length `4` (one pair), and over `α ≠ 1` eight (four pairs)". Exponent model: `ξ = ω^k` (`k` odd) lies over
 `α = ω^{16k}`, so "over `α = 1`" is `16k = 0` in `ℤ/80`; a pair `{O, O^{-1}}` lies over `α = 1` iff all its elements do.
 Every top orbit has length `4`. -/
@@ -1187,7 +1190,7 @@ theorem rem_4_4_N1 :
     ((topPairs 80 3).filter (fun P => ∀ k ∈ P.biUnion id, (16 : ZMod 80) * k ≠ 0)).card = 4 :=
   Xia.Proofs.rem_4_4_N1_proved
 
-/-- Row rem_4_4_N2 — Remark 4.4 (s4_normfree.tex:163): "On layer `0`, `μ_5 ∖ {1}` is one orbit of `⟨2⟩ = ⟨3⟩ = (ℤ/5)^×`":
+/-- Row rem_4_4_N2 — Remark 4.4 (s4_normfree.tex:169): "On layer `0`, `μ_5 ∖ {1}` is one orbit of `⟨2⟩ = ⟨3⟩ = (ℤ/5)^×`":
 every non-zero residue mod `5` is a power of `2` and a power of `3`; and on `μ_5 ∖ {1}` (exponent model
 `layer0' 80 4`), the orbit of every `α` under squaring (`k ↦ 2k`) and under cubing (`k ↦ 3k`) is all of `μ_5 ∖ {1}`. -/
 theorem rem_4_4_N2 :
@@ -1195,7 +1198,7 @@ theorem rem_4_4_N2 :
     ∀ k ∈ layer0' 80 4, orbit 2 k = layer0' 80 4 ∧ orbit 3 k = layer0' 80 4 :=
   Xia.Proofs.rem_4_4_N2_proved
 
-/-- Row rem_4_4_N3 — Remark 4.4 (s4_normfree.tex:163-164): "`G` consists of the `g` with `g(β) ∈ μ_80`,
+/-- Row rem_4_4_N3 — Remark 4.4 (s4_normfree.tex:169-170): "`G` consists of the `g` with `g(β) ∈ μ_80`,
 `g(β)^{-1} = g(β)^9`" (`G` of Step 5, `β ∈ μ_5 ∖ {1}`): for every `β`, `g ↦ g(β)` is a bijection from `G` onto
 `{t : t^80 = 1, t^{-1} = t^9}` (algebraically closed `L` of characteristic 3, as in row rem_4_4_G). -/
 theorem rem_4_4_N3 {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
@@ -1203,7 +1206,7 @@ theorem rem_4_4_N3 {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
       {t : L | t ^ 80 = 1 ∧ t⁻¹ = t ^ 9} :=
   Xia.Proofs.rem_4_4_N3_proved
 
-/-- Row rem_4_4_N4 — Remark 4.4 (s4_normfree.tex:164-165): "(For `f_0 ∈ G'`, (E2) and (E3) give
+/-- Row rem_4_4_N4 — Remark 4.4 (s4_normfree.tex:170-171): "(For `f_0 ∈ G'`, (E2) and (E3) give
 `f_0(α)^{10} = α^{-1}` and `τf_0/f_0 = f_0^6`" (`G'` with `σ = 2`, `κ = 1` as in Step 5 of Theorem 4.1; `α = ω^k` runs
 over `μ_5 ∖ {1}`; both sides of the second identity are `1` off `μ_5 ∖ {1}`). -/
 theorem rem_4_4_N4 {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (hω : IsPrimitiveRoot ω 80) :
@@ -1211,7 +1214,7 @@ theorem rem_4_4_N4 {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (h
       (∀ k ∈ layer0' 80 4, f0 k ^ 10 = (ω ^ k.val)⁻¹) ∧ tauG 80 4 f0 / f0 = f0 ^ 6 :=
   Xia.Proofs.rem_4_4_N4_proved ω hω
 
-/-- Row rem_4_4_N5 — Remark 4.4 (s4_normfree.tex:164): "The extendable top data satisfy `P(α)^5 = α^2`,
+/-- Row rem_4_4_N5 — Remark 4.4 (s4_normfree.tex:170): "The extendable top data satisfy `P(α)^5 = α^2`,
 which holds for half of the `10` possible values of `P(α)`". Reading: a top datum `h ∈ 𝒟` (Step 2, `σ = 2`, `κ = 1`) is
 extendable iff some `f ∈ G'` satisfies (E1) `f(α^2) = P(α) f(α)` on `μ_5 ∖ {1}`, `P = P_h` of Step 4 (`Pmap`); this
 holds iff `P(α)^5 = α^2` on `μ_5 ∖ {1}`; and for each `α ∈ μ_5 ∖ {1}` the values of `P(α)` over all top data form a set
@@ -1225,7 +1228,7 @@ theorem rem_4_4_N5 {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (h
       ((fun h => Pmap 80 4 h k) '' (topData 80 3 2 (1 : L) ω) ∩ {t : L | t ^ 5 = (ω ^ k.val) ^ 2}).ncard = 5 :=
   Xia.Proofs.rem_4_4_N5_proved ω hω
 
-/-- Row rem_4_4_N6 — Remark 4.4 (s4_normfree.tex:166): "Each such top datum extends in `2` ways at `α ≠ 1`, so the
+/-- Row rem_4_4_N6 — Remark 4.4 (s4_normfree.tex:172): "Each such top datum extends in `2` ways at `α ≠ 1`, so the
 count is `80^5 · 1/2 · 2 · 4 = 4 · 80^5`". Reading: for every top datum with `P(α)^5 = α^2` on `μ_5 ∖ {1}` there are exactly `2`
 maps `f ∈ G'` with (E1); the factor `80^5 · 1/2` is the number of such top data (half of `|𝒟| = 80^5`); and the
 arithmetic identity. -/
@@ -1254,7 +1257,7 @@ theorem nit_s4_layers (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 
         2 ^ (a - 1) :=
   Xia.Proofs.nit_s4_layers_proved n a nodd hn ha hodd h3
 
-/-- Row rem_4_4_v190 — Remark 4.4 (s4_normfree.tex:162-163; added in v1.90): "`n = 80` is the smallest `n > 8` in Xia's
+/-- Row rem_4_4_v190 — Remark 4.4 (s4_normfree.tex:168-169; added in v1.90): "`n = 80` is the smallest `n > 8` in Xia's
 range with `p` prime (`p = 6481`)" and "`|𝒟| = (3^4-1)^5 = 80^5`" (Xia's range: `n ≡ 8 (mod 24)`, s2_xia.tex:46;
 `|𝒟| = ∏_i (3^{L_i}-1) = pairProd 80 3`, as in row rem_4_4). The non-printed witnesses `pp 32 = 7·151`,
 `pp 56 = 31·103` are the lemmas H25_pp32, H25_pp56. -/
@@ -1274,7 +1277,7 @@ theorem link_L3_v190 :
 
 /-! ## Section 5's space V: Theorem 5.1(c),(d) and Theorem B in V-form (Defs: Xia/Defs/BlockSpace.lean) -/
 
-/-- Row 18V(c) — Theorem 5.1(c), V-form (s5_twonorms.tex:59-60, :33, :170-187): for the fibre of a solution `y` (ν-data
+/-- Row 18V(c) — Theorem 5.1(c), V-form (s5_twonorms.tex:59-60, :33, :170-186): for the fibre of a solution `y` (ν-data
 `ν = ŷ(k)ŷ(k+m)`), `V = Vfib ω ν` is an `F_3`-space (closed under `0`, `+`, `-`; characteristic 3); `T` (shift by `m`) is additive,
 an involution, maps `V` to `V` and keeps the ν-datum; on solutions of the fibre `T` is the action of `y ↦ y^{(u)}`; and the
 fibre is in bijection, through its top data, with the points of `V` with the fibre's ν-data. -/
@@ -1332,7 +1335,7 @@ theorem caseB_delta (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 
         -((ω ^ ρ.val)⁻¹ ^ (O.card * qO B)) * t0⁻¹ ^ (1 + qO B) :=
   Xia.Proofs.caseB_delta_proved n a nodd hn ha hodd h3 ω hω
 
-/-- Row 18V(d) — Theorem 5.1(d), V-form (s5_twonorms.tex:67-70, proof :170-215): `V = V_+ ⊕ V_-` (eigenspaces of `T`);
+/-- Row 18V(d) — Theorem 5.1(d), V-form (s5_twonorms.tex:67-70, proof :170-214): `V = V_+ ⊕ V_-` (eigenspaces of `T`);
 `𝒴_0`, `𝒴_1` are additive (`F_3`-linear) with values in `F` on all of `V`, `𝒴_0` is injective on `V_+` and zero on `V_-`, `𝒴_1`
 injective on `V_-` and zero on `V_+`; every point of the fibre has `y_0^- = 𝒴_0(v_+)` and `y_1^- = 𝒴_1(v_-)`. -/
 theorem thm_5_1_d_V (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)
@@ -1352,7 +1355,7 @@ theorem thm_5_1_d_V (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 
       algebraMap _ L (yMinus n (y' 1)) = Ycoef ω 1 ((topOf ω y' - Tsh (topOf ω y')) / 2) :=
   Xia.Proofs.thm_5_1_d_V_proved n a nodd hn ha hodd h3 ω hω y hy
 
-/-- Row BV — Theorem B, the V sentences (P10s_main.tex:192-195): for `n ≡ 8 (mod 24)` (`σ = 2`), the points of a fibre are
+/-- Row BV — Theorem B, the V sentences (P10s_main.tex:184-187): for `n ≡ 8 (mod 24)` (`σ = 2`), the points of a fibre are
 given by top data in the explicit `F_3`-space `V` attached to the fibre (the direct sum of the block parameter spaces); the
 substitution acts on the points of the fibre as the `F_3`-linear involution `T` of `V` with eigenspaces `V_±` (fibre to
 fibre: row thm_B_subst_fibre); `y_0` is an injective function of the `V_+`-component alone and `y_1` of the
@@ -1518,9 +1521,9 @@ theorem prop_6_1_X12 (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (he
     Plane → (Xia5Set n).Nonempty :=
   fun hP => prop_6_1_from_diffset n e hne he heo (hX12 hP).1 (hX12 hP).2.2.2
 
-/-! ## Claims added to the paper between v1.70 (first formalized) and the final text v2.70 -/
+/-! ## Claims added to the paper between v1.70 (first formalized) and v2.70 -/
 
-/-- Row thm_B_subst_fibre — Theorem B (P10s_main.tex:193): "The substitution acts on the points of the fibre as an
+/-- Row thm_B_subst_fibre — Theorem B (P10s_main.tex:185): "The substitution acts on the points of the fibre as an
 `F_3`-linear involution `T` of `V`": `y ↦ y^{(u)}` maps the fibre to itself and is an involution there; the top-data map
 `y' ↦ top(y')` is injective from the fibre into `V`, and through it the substitution is `T` (`T` additive, an involution, maps
 `V` to `V`; `F_3`-linear as `V` has characteristic 3). Eigenspaces `V_±`: row thm_5_1_d_V. -/
@@ -1534,7 +1537,7 @@ theorem thm_B_subst_fibre (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Fi
     (∀ h h' : ZMod n → L, Tsh (h + h') = Tsh h + Tsh h') ∧ (∀ h ∈ Vfib ω ν, Tsh h ∈ Vfib ω ν ∧ Tsh (Tsh h) = h) :=
   Xia.Proofs.thm_B_subst_fibre_proved n hn ω hω y hy
 
-/-- Row thm_B_pow2_V — Theorem B (P10s_main.tex:193): for `n = 2^e`, `e ≥ 5` odd (so `n ≡ 8 (mod 24)`), with
+/-- Row thm_B_pow2_V — Theorem B (P10s_main.tex:185): for `n = 2^e`, `e ≥ 5` odd (so `n ≡ 8 (mod 24)`), with
 `L = F = F_{3^{n/2}}` and `ω = ξ_0` of order `n`. "The space `V` is `{x ∈ F_{3^{n/2}} : x^{3^{n/4}} = -x}`": `v ↦ v(ξ_0)` (exponent
 `1`) is a bijection from `V` onto `Vsp n`; "a point of the fibre is given by `x = ŷ(ξ_0)`": the top data of a point `y'` take
 the value `ŷ'(ξ_0)` at `ξ_0`, this value lies in `Vsp n`, and `y' ↦ ŷ'(ξ_0)` is injective on the fibre; "`T(x) = ξ_0^{n/4}
@@ -1549,10 +1552,11 @@ theorem thm_B_pow2_V (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (he
     ∀ y' ∈ fibre ξ0 y, dftA ξ0 (ySubst y') 1 = Tmap n ξ0 (dftA ξ0 y' 1) :=
   Xia.Proofs.thm_B_pow2_V_full n e hne he heo ξ0 hξ0 y hy
 
-/-- Row thm_B_components — after Theorem B (P10s_main.tex:213): "As the top-layer part of `y_1` vanishes on `V_+`,
-the top-layer part of `y_0` alone determines the `V_+`-component, and likewise the top-layer part of `y_1` determines the
-`V_-`-component": for `v, v'` in `V`, equal `𝒴_0` gives equal `V_+`-components `(v + Tv)/2`, and equal `𝒴_1` gives equal
-`V_-`-components `(v - Tv)/2` (also `𝒴_1` vanishes on `V_+` and `𝒴_0` on `V_-`). -/
+/-- Row thm_B_components — after Theorem B (P10s_main.tex:202-203): "So the first vanishes on `V_-`, where
+`T=-1`, and the second on `V_+`, where `T=1`" (the first = the top-layer part of `y_0`, the second = that of `y_1`) and "Hence
+the top-layer part of `y_0` alone determines the `V_+`-component, and that of `y_1` the `V_-`-component": `𝒴_1` vanishes on
+`V_+` and `𝒴_0` on `V_-`; for `v, v'` in `V`, equal `𝒴_0` gives equal `V_+`-components `(v + Tv)/2`, and equal `𝒴_1` gives
+equal `V_-`-components `(v - Tv)/2`. -/
 theorem thm_B_components (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2))
     (hy : y ∈ NFSet n 2) :
@@ -1562,11 +1566,12 @@ theorem thm_B_components (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Fie
     ∀ v ∈ Vfib ω ν, ∀ v' ∈ Vfib ω ν, Ycoef ω 1 v = Ycoef ω 1 v' → (v - Tsh v) / 2 = (v' - Tsh v') / 2 :=
   Xia.Proofs.thm_B_components_proved n hn ω hω y hy
 
-/-- Row thm_B_xia_iff — after Theorem B (P10s_main.tex:216): "for `n ≡ 8 (mod 24)` and `σ = 2`, Xia's system has a
-solution if and only if, in some fibre, an eigencomponent allowed by `N(y_0) = -1` and one allowed by `N(y_1) = -1` add up to a
-point of the fibre". Fibre of `y ∈ NF`; `v_+ ∈ V_+` is allowed by `N(y_0) = -1` when `y_0^+ + 𝒴_0(v_+)` (`y_0^+` = the
-lower-layer part of `y_0`, constant on the fibre) is an `x ∈ F` with `N(x) = -1`; likewise `v_-` with `y_1`, `𝒴_1`; "a point of
-the fibre" = the top data of a point. (Also the Figure 1 caption's "a solution would be a crossing", with sec_2_2_xia_eq.) -/
+/-- Row thm_B_xia_iff — after Theorem B (P10s_main.tex:206): "For every `n ≡ 8 (mod 24)` and `σ = 2`, Xia's system
+has a solution if and only if, in some fibre, a `V_+`-component allowed by `Nm(y_0) = -1` and a `V_-`-component allowed by
+`Nm(y_1) = -1` add up to a point of the fibre". Fibre of `y ∈ NF`; `v_+ ∈ V_+` is allowed by `N(y_0) = -1` when
+`y_0^+ + 𝒴_0(v_+)` (`y_0^+` = the lower-layer part of `y_0`, constant on the fibre) is an `x ∈ F` with `N(x) = -1`; likewise
+`v_-` with `y_1`, `𝒴_1`; "a point of the fibre" = the top data of a point. (Also the Figure 1 caption's "A solution of Xia's
+system would be a crossing on the curve" (P10s_main.tex:137-138), with sec_2_2_xia_eq.) -/
 theorem thm_B_xia_iff (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) :
     (XiaSet n 2).Nonempty ↔
@@ -1601,7 +1606,7 @@ theorem sigma_of_n (n : ℕ) (h8 : 8 ∣ n) (hp : (pp n).Prime) {M : Type*} [Fie
     σ = n / orderOf ((3 : ZMod (pp n)) ^ ((pp n - 1) / n)) ∧ ∀ c : ℕ, (g : ZMod (pp n)) ^ c = 3 → σ = Nat.gcd c n :=
   Xia.Proofs.sigma_of_n_proved n h8 hp χ g hg hχg ϖ hϖ σ hσ hσ0 h3
 
-/-- Row table4_sigma80 — Table 4 caption (s5_twonorms.tex:95-96; also s2_xia.tex:47 and P10s_main.tex:182):
+/-- Row table4_sigma80 — Table 4 caption (s5_twonorms.tex:95-96; also s2_xia.tex:47 and P10s_main.tex:174):
 "For `n = 80` the `σ` of `n` (Section 2) is `10`, not `2`" = row lem_2_2_sigma's setting at `n = 80` (`p = 6481` prime) with
 conclusion `σ = 10`. ("so the bound does not apply to a plane of order 80" = AUDIT_NOTES: the bound's rows assume `σ = 2`.) -/
 theorem table4_sigma80 {M : Type*} [Field M] (χ : MulChar (ZMod (pp 80)) M) (g : (ZMod (pp 80))ˣ)
@@ -1609,7 +1614,7 @@ theorem table4_sigma80 {M : Type*} [Field M] (χ : MulChar (ZMod (pp 80)) M) (g 
     (ϖ : M) (hϖ : IsPrimitiveRoot ϖ 80) (σ : ℕ) (hσ : σ ∣ 80) (hσ0 : 0 < σ) (h3 : χ 3 = ϖ ^ σ) : σ = 10 :=
   Xia.Proofs.table4_sigma80_proved χ g hg hχg ϖ hϖ σ hσ hσ0 h3
 
-/-- Row cor_3_5_fibre — Corollary 3.5(ii) (s3_pow2.tex:134; added in v2.70): "Above each triple `(ν, S, ŷ(1))`, that is, in
+/-- Row cor_3_5_fibre — Corollary 3.5(ii) (s3_pow2.tex:133; added in v2.70): "Above each triple `(ν, S, ŷ(1))`, that is, in
 each fibre of Theorem B": for `n = 2^e`, `e ≥ 5` odd, with `L = F` and `ω = ξ_0`, two solutions `y, y'` of the norm-free system
 lie in the same fibre of Theorem B (equal `ŷ` on the lower layers, Defs `fibre`) if and only if they have the same triple
 `(ν, S, ŷ(1)) = (ŷ(ξ_0)^{1+q}, S, ŷ(1))` of row cor_3_5_ii. -/
@@ -1619,14 +1624,96 @@ theorem cor_3_5_fibre (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (h
       (dft ξ0 y' 1 ^ (1 + qq n) = dft ξ0 y 1 ^ (1 + qq n) ∧ S y' = S y ∧ dft ξ0 y' 0 = dft ξ0 y 0) :=
   Xia.Proofs.cor_3_5_fibre_proved n e hne he heo ξ0 hξ0 y y' hy hy'
 
+/-- Row thm_6_4_r3 — remark after Theorem 6.4 (s6_primes.tex:148; added in v3.00):
+"For `r = 3` and `σ_r` a divisor of `n`, this is Theorem 4.1 with Proposition 4.3": for `3 ∤ pn` and `σ ∣ n`, the norm-free
+system in characteristic 3 with shift `σ` IS the norm-free system with shift `σ`: its field `F_{3^{n/gcd(σ,n)}}` is
+`F_{3^{n/σ}}`, its equations are exactly those of Definition 2.3 (`n(1-p) = 0` and `n^4 = 1` in `F_3`), and so the two solution
+sets are in bijection, with the same count. (Theorem 6.4's sign condition then reads "`σ` even", as `(p/3) = 1`: row
+thm_6_4_remarks.) -/
+theorem thm_6_4_r3 (n : ℕ) [NeZero n] (hr : ¬ 3 ∣ pp n * n) (σ : ℕ) (hσ : σ ∣ n) :
+    n / Int.gcd (σ : ℤ) n = n / σ ∧
+    (∀ y : ZMod n → GaloisField 3 (n / Int.gcd (σ : ℤ) n), y ∈ NFrSet n 3 (σ : ℤ) ↔ NormFreeEqs (σ : ℤ) y) ∧
+    Nonempty (NFrSet n 3 (σ : ℤ) ≃ NFSet n σ) ∧ Nat.card (NFrSet n 3 (σ : ℤ)) = Nat.card (NFSet n σ) :=
+  Xia.Proofs.thm_6_4_r3_proved n hr σ hσ
+
+/-! ## Printed claims added in the last versions of the paper (Figure 2's caption, the introduction, after Theorem B) -/
+
+/-- Row fig2_layers — Figure 2's caption (s4_normfree.tex:72; with rows rem_4_4 and rem_4_4_N1): "The layers of `μ_n` for
+`n = 80` (Remark 4.4: `a = 4`, `n_odd = 5`). An element `ξ = ζα` lies in layer `j` when `ζ` has order `2^j`. The top layer has
+`40` elements and splits into ten orbits of `ξ ↦ ξ^3`, each of length `4`, in five inverse pairs `{O, O^{-1}}`. The pair with
+`α = 1` is a block of case A (`-O = O`), and the four pairs with `α ≠ 1` form two blocks `{O, O^{-1}, -O, -O^{-1}}` of case C
+(Table 4). Squaring maps each layer above layer `0` onto the layer below." Exponent model `ξ = ω^k` (Defs `fig2Layer`):
+`80 = 2^4·5`; layer sizes `5, 5, 10, 20, 40` (layers `0..4`, as drawn); layer 4 is the tree's `topLayer 80` (odd `k`); ten top
+orbits, each of length 4, each with its inverse a top orbit and not its own inverse; five pairs; exactly one case-A block, of
+2 orbits, whose elements are the top-layer `k` over `α = 1` (`16k = 0`); no case-B block; exactly two case-C blocks, of 4
+orbits each, whose elements are the top-layer `k` over `α ≠ 1`; squaring `ξ ↦ ξ^2` is `k ↦ 2k`. (One pair over `α = 1` and
+four over `α ≠ 1` = row rem_4_4_N1; "the right column gives the choices of Table 2, which multiply to `4·80^5`" = row
+rem_4_4.) -/
+theorem fig2_layers :
+    (80 : ℕ) = 2 ^ 4 * 5 ∧
+    (fig2Layer 0).card = 5 ∧ (fig2Layer 1).card = 5 ∧ (fig2Layer 2).card = 10 ∧ (fig2Layer 3).card = 20 ∧
+      (fig2Layer 4).card = 40 ∧
+    fig2Layer 4 = topLayer 80 ∧
+    (topOrbits 80 3).card = 10 ∧ (∀ O ∈ topOrbits 80 3, O.card = 4 ∧ inv O ∈ topOrbits 80 3 ∧ inv O ≠ O) ∧
+    (topPairs 80 3).card = 5 ∧
+    (blocksA 80).val.map Finset.card = {2} ∧
+    (blocksA 80).biUnion (fun B => B.biUnion id) = (topLayer 80).filter (fun k => (16 : ZMod 80) * k = 0) ∧
+    (blocksB 80).card = 0 ∧
+    (blocksC 80).val.map Finset.card = {4, 4} ∧
+    (blocksC 80).biUnion (fun B => B.biUnion id) = (topLayer 80).filter (fun k => (16 : ZMod 80) * k ≠ 0) ∧
+    (∀ j : ℕ, 1 ≤ j → j ≤ 4 → (fig2Layer j).image (fun k => 2 * k) = fig2Layer (j - 1)) :=
+  Xia.Proofs.fig2_layers_proved
+
+/-- Link intro_planar_H7 — introduction (P10s_main.tex:74; with row intro_planar_2_8): "For `n = 2` (`H = {1,2,4}` in `F_7`)
+and `n = 8` it can": the subgroup `H` of order `n + 1 = 3` of `F_7^×` (the `h` with `h^3 = 1`, as in row intro_planar_2_8)
+is `{1, 2, 4}`. -/
+theorem intro_planar_H7 : univ.filter (fun h : ZMod 7 => h ^ 3 = 1) = {1, 2, 4} :=
+  Xia.Proofs.intro_planar_H7_proved
+
+/-- Row intro_sigma_order — introduction (P10s_main.tex:174; also the proof of Lemma 2.2, s2_xia.tex:37): "Xia's proof fixes
+`σ` for each `n` (`n/σ` is the order of `3` in `F_p^×/H`), and we call it the `σ` of `n` (Section 2)". In row sigma_of_n's
+setting (same binders: `8 ∣ n`, `p = n^2+n+1` prime, data `χ, g, ϖ, σ` with `χ(3) = ϖ^σ`), with `H` = the `x ∈ F_p^×` with
+`x^{n+1} = 1` (the kernel of `x ↦ x^{n+1}`, the subgroup of order `n + 1`, as in row intro_planar_2_8; it is `ker χ`, as
+s2_xia.tex:37 says): `3 ≠ 0` in `F_p`, and the class of `3` in `F_p^× ⧸ H` has order `n / σ`. -/
+theorem intro_sigma_order (n : ℕ) (h8 : 8 ∣ n) (hp : (pp n).Prime) {M : Type*} [Field M] (χ : MulChar (ZMod (pp n)) M)
+    (g : (ZMod (pp n))ˣ) (hg : ∀ x : (ZMod (pp n))ˣ, x ∈ Subgroup.zpowers g)
+    (hχg : IsPrimitiveRoot (χ (g : ZMod (pp n))) n) (ϖ : M) (hϖ : IsPrimitiveRoot ϖ n) (σ : ℕ) (hσ : σ ∣ n)
+    (hσ0 : 0 < σ) (h3 : χ 3 = ϖ ^ σ) :
+    (3 : ZMod (pp n)) ≠ 0 ∧
+      ∀ u : (ZMod (pp n))ˣ, (u : ZMod (pp n)) = 3 →
+        orderOf (QuotientGroup.mk u :
+          (ZMod (pp n))ˣ ⧸ (powMonoidHom (n + 1) : (ZMod (pp n))ˣ →* (ZMod (pp n))ˣ).ker) = n / σ :=
+  Xia.Proofs.intro_sigma_order_proved n h8 hp χ g hg hχg ϖ hϖ σ hσ hσ0 h3
+
+/-- Link intro_norm_layers — after Theorem B (P10s_main.tex:198; with row rem_2_6): "we call the sum over the
+lower layers the lower-layer part of `y_t` and the sum over the top layer its top-layer part (Remark 2.6). On a fibre the
+lower-layer parts of `y_0` and `y_1` are constant, and `Nm(y_j)` is the square of the lower-layer part of `y_j` minus the square
+of its top-layer part". Theorem B's setting: `n ≡ 8 (mod 24)`, `σ = 2`, `y` a solution of the norm-free system, `ŷ` computed
+in `L ⊇ F` with `ω` a primitive `n`-th root of unity (exponent model: lower layers `μ_{n/2}` = even `k`, top layer = odd
+`k`). The lower-layer part of `y_t` is `n^{-1} ∑_{k even} ŷ(ω^k) ω^{-kt}`, and it is `y_t^+` of Remark 2.6; the top-layer part
+is `𝒴_t` of the top data (`Ycoef`, as in rows thm_B_components, thm_B_xia_iff), and it is `y_t^-`; then
+`Nm(y_t) = (lower-layer part)^2 - (top-layer part)^2` for every `t` (so for `t = 0, 1`); and every point `y'` of the fibre of
+`y` has the same lower-layer parts as `y`. -/
+theorem intro_norm_layers (n : ℕ) [NeZero n] (hn : n % 24 = 8) {L : Type*} [Field L]
+    [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2))
+    (hy : y ∈ NFSet n 2) :
+    (∀ t : ZMod n, algebraMap _ L (yPlus n (y t)) =
+        (n : L)⁻¹ * ∑ k ∈ univ.filter (fun k : ZMod n => Even k.val), dftA ω y k * ((ω ^ k.val)⁻¹) ^ t.val) ∧
+    (∀ t : ZMod n, algebraMap _ L (yMinus n (y t)) = Ycoef ω t.val (topOf ω y)) ∧
+    (∀ t : ZMod n, algebraMap _ L (Nm n (y t)) =
+        ((n : L)⁻¹ * ∑ k ∈ univ.filter (fun k : ZMod n => Even k.val), dftA ω y k * ((ω ^ k.val)⁻¹) ^ t.val) ^ 2 -
+          Ycoef ω t.val (topOf ω y) ^ 2) ∧
+    (∀ y' ∈ fibre ω y, ∀ t : ZMod n, yPlus n (y' t) = yPlus n (y t)) :=
+  Xia.Proofs.intro_norm_layers_proved n hn ω hω y hy
+
 /-! ## NOT stated in Lean (with reasons) — wave 1
 (N1) Thm 2.1 (s2_xia.tex:9) and the introduction's cited results (Kantor; Thas–Zagier; Jungnickel–Vedder; Feit; Ho–Pott;
      Gordon–Mills–Welch): cited, about projective planes - no projective-plane theory in Lean's library (goal A4).
-     v2.70 says "By Theorem 2.1 and its proof in [10], to exclude the planes of order n it suffices to prove that (1) has no
+     The paper says "By Theorem 2.1 and its proof in [10], to exclude the planes of order n it suffices to prove that (1) has no
      solution for this n and the σ of n" (s2_xia.tex:17-18): Thm 2.1 and its proof are NOT stated and no row
      assumes them; the σ of Xia's proof (`χ(3) = ϖ^σ`, s2_xia.tex:15-17) enters only as binders (lem_2_2_sigma, sigma_of_n,
      table4_sigma80). Scope/status sentences, not claims: "Our results do not exclude any of these orders" (P10s_main.tex:84);
-     Figure 1's "Whether one exists for some `n > 8` is open" (P10s_main.tex:141).
+     Figure 1's "Whether one exists for some `n > 8` is open" (P10s_main.tex:138).
 (N2) Rem 2.5 (s2_xia.tex:109): a shape analogy with Gauss-sum laws; no mathematical claim.
 (N3) Rem 3.6(c), the closing sentence of Rem 3.6(b) and s6_primes.tex:103-105: remarks on where hypotheses are used.
 (N4) Prop 6.1 (s6_primes.tex:17-42): row 20 = prop_6_1 (PROVED GIVEN Xia's results); its arithmetic is row 20a.

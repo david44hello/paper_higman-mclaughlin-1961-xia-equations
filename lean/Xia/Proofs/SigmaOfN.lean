@@ -73,7 +73,7 @@ lemma H36_order_three_pow (n : ℕ) (hp : (pp n).Prime) (hn8 : 8 ≤ n) (g : (ZM
     rw [← hc, Units.val_pow_eq_pow_val, Units.val_pow_eq_pow_val, ← pow_mul, ← pow_mul, mul_comm]
   rw [heq, orderOf_units, orderOf_pow' _ hc0, hordh]
 
-/-- Row sigma_of_n (draft v2.60) — s2_xia.tex:17, proof of Lemma 2.2 (s2_xia.tex:35-38). -/
+/-- Row sigma_of_n — s2_xia.tex:17, proof of Lemma 2.2 (s2_xia.tex:35-38). -/
 theorem sigma_of_n_proved (n : ℕ) (h8 : 8 ∣ n) (hp : (pp n).Prime) {M : Type*} [Field M] (χ : MulChar (ZMod (pp n)) M)
     (g : (ZMod (pp n))ˣ) (hg : ∀ x : (ZMod (pp n))ˣ, x ∈ Subgroup.zpowers g)
     (hχg : IsPrimitiveRoot (χ (g : ZMod (pp n))) n) (ϖ : M) (hϖ : IsPrimitiveRoot ϖ n) (σ : ℕ) (hσ : σ ∣ n)

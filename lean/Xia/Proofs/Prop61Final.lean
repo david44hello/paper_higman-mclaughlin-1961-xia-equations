@@ -19,7 +19,7 @@ lemma L10_five_ne_zero (n : ℕ) (hn : 2 ≤ n) : (5 : ZMod (pp n)) ≠ 0 := by
     nlinarith
   exact_mod_cast this
 
-/-- Proposition 6.1 from the planar difference set onwards (s6_primes.tex:17-41 after Xia's Prop 1.2): for `n = 2^e`
+/-- Proposition 6.1 from the planar difference set onwards (s6_primes.tex:17-42 after Xia's Prop 1.2): for `n = 2^e`
 (`e ≥ 3` odd), if `p = n^2+n+1` is prime and `H_{p,n}` is a `(p, n+1, 1)`-difference set, Xia's system (eq:xia125) has a
 solution over `F_{5^n}`. No Xia hypothesis: Lemma 3.5 (`L10_hX35_of_lemma`), Lemma 4.1 (`L10_hX41_proved`) and Theorem
 3.4(b) (`L10_hX34b_proved`) are proved in Lean. The steps are those of `prop_6_1_proved`. -/

@@ -282,7 +282,7 @@ end General
 
 /-! ## Part 4 — the four rows, parametrized by the count rows they use -/
 
-/-- Remark 4.4 (s4_normfree.tex:160-165), `n = 80`; the count from Theorem 4.1 (row `thm_4_1_count`). -/
+/-- Remark 4.4 (s4_normfree.tex:167-172), `n = 80`; the count from Theorem 4.1 (row `thm_4_1_count`). -/
 theorem rem_4_4_of
     (hcount : ∀ (n a nodd : ℕ) [NeZero n] (_hn : n = 2 ^ a * nodd) (_ha : 3 ≤ a) (_hodd : Odd nodd)
       (_h3 : ¬ 3 ∣ n),
@@ -297,7 +297,7 @@ theorem rem_4_4_of
     simpa using h
   · rw [(hcount 80 4 5 (by norm_num) (by norm_num) ⟨2, rfl⟩ (by norm_num)).1, hpp]
 
-/-- Link L1 (s3_pow2.tex:139-140); counts from Theorem 3.1 (row `thm_3_1_card`) and Corollary 3.5(ii) (row
+/-- Link L1 (s3_pow2.tex:138-139); counts from Theorem 3.1 (row `thm_3_1_card`) and Corollary 3.5(ii) (row
 `cor_3_5_ii`). -/
 theorem link_L1_of
     (hcard : ∀ (n e : ℕ) [NeZero n] (_hne : n = 2 ^ e) (_he : 3 ≤ e), Nat.card (NFSet n 2) = 4 * (QQ n - 1))
@@ -389,7 +389,7 @@ theorem link_L2_of
   · rw [H18_n8_fp]
   · rw [hcard 8 3 (by norm_num) le_rfl]; norm_num [QQ]
 
-/-- Link L3 — Table 4 (s5_twonorms.tex:93-108); counts from Theorem 3.1 (`n = 8, 32`) and Theorem 4.1 (`n = 56, 80, 104`). -/
+/-- Link L3 — Table 4 (s5_twonorms.tex:93-109); counts from Theorem 3.1 (`n = 8, 32`) and Theorem 4.1 (`n = 56, 80, 104`). -/
 theorem link_L3_of
     (hcard : ∀ (n e : ℕ) [NeZero n] (_hne : n = 2 ^ e) (_he : 3 ≤ e), Nat.card (NFSet n 2) = 4 * (QQ n - 1))
     (hcount : ∀ (n a nodd : ℕ) [NeZero n] (_hn : n = 2 ^ a * nodd) (_ha : 3 ≤ a) (_hodd : Odd nodd)

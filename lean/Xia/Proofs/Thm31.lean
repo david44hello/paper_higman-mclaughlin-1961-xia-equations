@@ -226,7 +226,7 @@ section Step2Generic
 
 variable {K : Type*} [Field K]
 
-/-- `t_k := ξ_0^{2k3^k} θ^{3^k}` (s3_pow2.tex:41). -/
+/-- `t_k := ξ_0^{2k3^k} θ^{3^k}` (s3_pow2.tex:30). -/
 def H4_t (ξ0 θ : K) (j : ℕ) : K := ξ0 ^ (2 * j * 3 ^ j) * θ ^ (3 ^ j)
 
 theorem H4_step2a (ξ0 θ : K) (k : ℕ) : ξ0 ^ (2 * (k + 1) * 3 ^ (k + 1)) * θ ^ (3 ^ (k + 1)) =
@@ -356,7 +356,7 @@ theorem H4_S_eq_dft {K : Type*} [Field K] (hn : Even n) (h2 : 2 ≤ n) {ω : K} 
   rw [H4_pow_val_half hω hn h2]
   apply Finset.sum_congr rfl; intro t _; ring
 
-/-- Frobenius on `θ = ŷ(ξ_0)`: `θ^Q = -θ` (s3_pow2.tex:39-41, via `y_{t+m} = y_t^Q` and `ξ_0^Q = ξ_0`). -/
+/-- Frobenius on `θ = ŷ(ξ_0)`: `θ^Q = -θ` (s3_pow2.tex:28-30, via `y_{t+m} = y_t^Q` and `ξ_0^Q = ξ_0`). -/
 theorem H4_frob {K : Type*} [Field K] [CharP K 3] {e : ℕ} (hne : n = 2 ^ e) (he : 3 ≤ e)
     {ω : K} (hω : IsPrimitiveRoot ω n) (y : ZMod n → K) (hL1 : L1 3 ((2 : ℕ) : ℤ) y) :
     dft ω y 1 ^ QQ n = -dft ω y 1 := by
@@ -420,7 +420,7 @@ theorem thm_3_1_step2_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 �
       fun k => H4_step2b h4 hξ0.pow_eq_one hm (H4_three_pow_quarter hne he) hθ k,
       fun k => H4_step2c ξ0 θ k⟩
 
-/-! ## Part G — the layer recursion as a fixed point (Steps 3-4 of the paper, s3_pow2.tex:48-68)
+/-! ## Part G — the layer recursion as a fixed point (Steps 3-4 of the paper, s3_pow2.tex:37-57)
 
 `H4_Gam top s c g` puts `top` on the top layer (odd `k`), `c` at `0`, and `s · g(z) · g(z + n/2)` at an even `k ≠ 0`,
 where `z = k.val / 2` (so `2z = k`). Its iterates stabilise after `e` rounds; the result is its unique fixed point. -/

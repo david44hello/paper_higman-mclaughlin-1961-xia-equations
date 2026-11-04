@@ -531,7 +531,7 @@ theorem H12_first_iso {ι L : Type*} [Field L] (G : Set (ι → L)) (τ : (ι �
           exact mul_div_cancel_left₀ _ (hne _ (hs y hy).1 x) }
   rw [Nat.card_congr e, Nat.card_prod]
 
-/-- Step 7, first part (the identity `|(τ-1)G|·|G^τ| = |G|` used in s4_normfree.tex:137). -/
+/-- Step 7, first part (the identity `|(τ-1)G|·|G^τ| = |G|` used in s4_normfree.tex:144). -/
 theorem thm_4_1_step7_part1 (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] :
     Nat.card ((fun g => tauG n a g / g) '' (Ggrp n a 3 : Set (ZMod n → L))) *
@@ -761,7 +761,7 @@ theorem rem_4_4_G_proved {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
 
 /-! ## 6. Step 7, second part: `|K_n| = 4 ∏_i (3^{L_i}-1)`, given Steps 2 and 6
 
-Plan (s4_normfree.tex:134-139, homogeneous laws). `K := {λ : (h1),(h3),(h4)}` is a group; `λ ↦ (λ(-1), λ(-1)·λ)` gives
+Plan (s4_normfree.tex:141-146, homogeneous laws). `K := {λ : (h1),(h3),(h4)}` is a group; `λ ↦ (λ(-1), λ(-1)·λ)` gives
 `K ≃ {±1} × K₁`, `K₁ := {λ ∈ K : λ(-1) = 1}` (there (h4) reads `λ(ξ²) = λ(ξ)λ(-ξ)`). For `res : K₁ → 𝒟⁰` (restriction
 to the top layer): `ker res ≃ {±1} × G^τ` and `res(K₁) = Π⁻¹((τ-1)G)`. Both use the layer products
 `N_i(λ)(k) := ∏_{ρ ∈ 𝓛_a, 2^i ρ = k} λ(ρ)`, with `N_{i+1}(2k) = N_i(k) N_i(k+m)`; the descent is `λ(2^i z) = N_i(λ)(2^i z)`
@@ -1036,7 +1036,7 @@ theorem H12_N_neg (h2 : 2 ∣ n) (lam : ZMod n → L) (hlam : ∀ ρ ∈ topLaye
   rw [← Finset.prod_mul_distrib]
   exact Finset.prod_eq_one (fun ρ hρ => hlam ρ (Finset.mem_filter.mp hρ).1)
 
-/-- If `-k = k`, the product pairs `ρ` with `-ρ` (s4_normfree.tex:84-86: `∏_{Ξ_a} = 1`). -/
+/-- If `-k = k`, the product pairs `ρ` with `-ρ` (s4_normfree.tex:90-92: `∏_{Ξ_a} = 1`). -/
 theorem H12_N_negself (h2 : 2 ∣ n) (h4 : 4 ∣ n) (lam : ZMod n → L)
     (hlam : ∀ ρ ∈ topLayer n, lam ρ * lam (-ρ) = 1) (i : ℕ) {k : ZMod n} (hk : -k = k) :
     H12_N lam i k = 1 := by
@@ -1147,7 +1147,7 @@ theorem H12_res_D0 (h2 : 2 ∣ n) {lam : ZMod n → L} (hK : H12_K lam) :
   · have hk' : k ∉ topLayer n := by rw [H12_mem_topLayer]; exact Nat.not_odd_iff_even.mpr hk
     simp only [H12_res, ite_eq_right hk']
 
-/-! ### The descent (s4_normfree.tex:80-83) -/
+/-! ### The descent (s4_normfree.tex:86-89) -/
 
 theorem H12_descent (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (_hodd : Odd nodd) (h2 : 2 ∣ n) {lam : ZMod n → L}
     (hK : H12_K lam) (hm1 : lam (half n) = 1) :
@@ -1588,7 +1588,7 @@ theorem H12_preimage_card {ι κ L : Type*} [Field L] (A : Set (ι → L)) (φ :
 
 end Count
 
-/-- Step 7 (s4_normfree.tex:134-139), with Steps 2 and 6 as exact-instance hypotheses (`h2` is
+/-- Step 7 (s4_normfree.tex:141-146), with Steps 2 and 6 as exact-instance hypotheses (`h2` is
 `Xia.Paper.thm_4_1_step2 n a nodd hn ha hodd h3 ω hω`, `h6` is `Xia.Paper.thm_4_1_step6 n a nodd hn ha hodd h3`). -/
 theorem thm_4_1_step7_of (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (_hω : IsPrimitiveRoot ω n)

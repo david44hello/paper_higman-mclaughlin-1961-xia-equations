@@ -792,7 +792,7 @@ theorem H22_fibre_eq {L : Type*} [Field L] [Algebra (GaloisField 3 (n / 2)) L] (
   exact Iff.rfl
 
 /-- Row 18c (counting part) — Theorem 5.1(c) (s5_twonorms.tex:61-67) with the identification of fibres (:74-77,
-P10s_main.tex:175). Statement VERBATIM from Xia/Paper/Statements.lean; extra hypothesis `hcount` = the row
+P10s_main.tex:183-184). Statement VERBATIM from Xia/Paper/Statements.lean; extra hypothesis `hcount` = the row
 `thm_4_1_count n a nodd hn ha hodd h3` (exact instance). The first conjunct does not use `hcount`
 (see `H22_fibre_card`). -/
 theorem thm_5_1_c_count_of (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd)

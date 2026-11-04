@@ -9,7 +9,7 @@ This folder is a Lean 4 proof of the paper's results.
 Install Git, Lean (https://lean-lang.org/install/), Python 3 and ripgrep, then run:
 
 ```bash
-git clone https://github.com/david44hello/paper_higman-mclaughlin-1961-xia-equations.git
+git clone --branch v3.70 --single-branch https://github.com/david44hello/paper_higman-mclaughlin-1961-xia-equations.git
 cd paper_higman-mclaughlin-1961-xia-equations/lean
 ./check.sh
 ```

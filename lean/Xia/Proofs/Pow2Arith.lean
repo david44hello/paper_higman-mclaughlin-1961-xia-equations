@@ -428,7 +428,7 @@ theorem thm_3_1_theta_set_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 
       right_inv := fun x => by ext; simp [hζ0] }
   rw [Nat.card_congr eqv, Nat.card_eq_finsetCard, hcardR]
 
-/-- Row 7e — proof of Theorem 3.1, Step 1 (s3_pow2.tex:31-35). -/
+/-- Row 7e — proof of Theorem 3.1, Step 1 (s3_pow2.tex:20-24). -/
 theorem thm_3_1_step1_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) :
     padicValNat 2 (3 ^ (n / 2) - 1) = e + 1 ∧ padicValNat 2 (QQ n - 1) = e ∧
       orderOf (3 : ZMod n) = 2 ^ (e - 2) ∧
@@ -454,7 +454,7 @@ theorem thm_3_1_step1_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 �
     apply H3_addOrder_half k j hj1 x _ hx
     rw [mul_add, hz, H3_two_mul_half, add_zero]
 
-/-- Coverage — s3_pow2.tex:85-96 (set-up of Section 3.2), `n = 2^e`, `e ≥ 4`. -/
+/-- Coverage — s3_pow2.tex:84-95 (set-up of Section 3.2), `n = 2^e`, `e ≥ 4`. -/
 theorem sec_3_2_setup_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) :
     QQ n = qq n ^ 2 ∧ orderOf (iota n ξ0) = 4 ∧ iota n ξ0 ^ QQ n = iota n ξ0 ∧ iota n ξ0 ^ 9 = iota n ξ0 ∧
@@ -536,7 +536,7 @@ theorem sec_3_2_setup_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 �
     field_simp
     ring
 
-/-- Row 13 — Remark 3.6(a),(b) (s3_pow2.tex:217-220). -/
+/-- Row 13 — Remark 3.6(a),(b) (s3_pow2.tex:216-219). -/
 theorem rem_3_6_proved :
     (∀ (n e : ℕ) [NeZero n], n = 2 ^ e → 4 ≤ e → ∀ ξ0 : GaloisField 3 (n / 2), IsPrimitiveRoot ξ0 n →
       (∀ θ ∈ Vsp n, Tmap n ξ0 (ξ0⁻¹ * θ) = -(ξ0⁻¹ * Tmap n ξ0 θ)) ∧

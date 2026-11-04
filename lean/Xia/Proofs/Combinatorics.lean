@@ -64,7 +64,7 @@ lemma H6_u_even (h2 : 2 ∣ n) {t : ZMod n} (ht : Even t.val) : (1 + half n) * t
 lemma H6_u_odd (h2 : 2 ∣ n) {t : ZMod n} (ht : Odd t.val) : (1 + half n) * t = t + half n := by
   rw [add_mul, one_mul, mul_comm (half n) t, H6_mul_half_odd h2 ht]
 
-/-- `u^2 = 1` (s5_twonorms.tex:112). -/
+/-- `u^2 = 1` (s5_twonorms.tex:113). -/
 lemma H6_u_sq (h2 : 2 ∣ n) (h4 : 4 ∣ n) : (1 + half n) * (1 + half n) = (1 : ZMod n) := by
   linear_combination H6_half_sq h2 h4 + H6_two_mul_half h2
 
@@ -440,7 +440,7 @@ theorem H6_pairs_general {r : ℕ} (h4 : 4 ∣ n) (hcop : Nat.Coprime r n)
 
 end Orbits
 
-/-! ## Part 3 — `-1 ∈ ⟨r⟩ (mod 2^a)` forces `r ≡ -1 (mod 2^a)` (s6_primes.tex:161-163) -/
+/-! ## Part 3 — `-1 ∈ ⟨r⟩ (mod 2^a)` forces `r ≡ -1 (mod 2^a)` (s6_primes.tex:162-164) -/
 
 lemma H6_zmod4_sq : ∀ x : ZMod 4, x ^ 2 ≠ -1 := by decide
 

@@ -653,7 +653,7 @@ theorem H11_T0_neg {n : ℕ} [NeZero n] {L : Type*} [Field L] {lam : ZMod n → 
   rw [H11_D0_eq] at hl
   exact eq_inv_of_mul_eq_one_right (hl.1 ρ hρ).2
 
-/-- Row 14e — proof of Theorem 4.1, Step 2 (s4_normfree.tex:73-77). -/
+/-- Row 14e — proof of Theorem 4.1, Step 2 (s4_normfree.tex:79-83). -/
 theorem thm_4_1_step2_proved (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (_hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (hω : IsPrimitiveRoot ω n) :
     Nat.card (topData n 3 2 (1 : L) ω) = pairProd n 3 ∧ Nat.card (topData0 n 3 : Set (ZMod n → L)) = pairProd n 3 ∧
@@ -1319,7 +1319,7 @@ theorem H11_surj {a nodd : ℕ} (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : O
 
 end Surj
 
-/-- Row 14h — proof of Theorem 4.1, Step 6 (s4_normfree.tex:116-132): `Π : 𝒟^0 → G`, `λ ↦ P_λ`, is a homomorphism onto `G`. -/
+/-- Row 14h — proof of Theorem 4.1, Step 6 (s4_normfree.tex:123-139): `Π : 𝒟^0 → G`, `λ ↦ P_λ`, is a homomorphism onto `G`. -/
 theorem thm_4_1_step6_proved (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
     (∀ lam ∈ (topData0 n 3 : Set (ZMod n → L)), Pmap n a lam ∈ (Ggrp n a 3 : Set (ZMod n → L))) ∧

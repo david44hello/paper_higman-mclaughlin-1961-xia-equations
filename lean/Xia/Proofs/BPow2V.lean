@@ -44,7 +44,7 @@ theorem H37_val_one (j : ℕ) : (1 : ZMod (2 ^ (j + 3))).val = 1 := by
   have : 2 ^ 3 ≤ 2 ^ (j + 3) := Nat.pow_le_pow_right (by norm_num) (by omega)
   omega
 
-/-- Row thm_B_pow2_V — Theorem B (P10s_main.tex:193), the sentence for `n = 2^e`, `e ≥ 5` odd. -/
+/-- Row thm_B_pow2_V — Theorem B (P10s_main.tex:185), the sentence for `n = 2^e`, `e ≥ 5` odd. -/
 theorem thm_B_pow2_V_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (heo : Odd e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) (y : ZMod n → GaloisField 3 (n / 2)) (hy : y ∈ NFSet n 2) :
     let ν := nuData (topOf ξ0 y)

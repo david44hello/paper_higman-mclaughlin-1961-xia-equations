@@ -15,7 +15,7 @@ open Xia Finset
 
 set_option linter.unusedSectionVars false
 
-/-! ## Part A — Coverage s6_primes.tex:147-149 (thm_6_4_remarks) -/
+/-! ## Part A — Coverage s6_primes.tex:148-150 (thm_6_4_remarks) -/
 
 theorem H14_topPairs_five (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : Odd e) :
     topPairs n 5 = {{orbit 5 (1 : ZMod n), inv (orbit 5 1)}} := by
@@ -88,7 +88,7 @@ section Step2Generic
 
 variable {K : Type*} [Field K]
 
-/-- `t_k := ξ_0^{k5^k} θ^{5^k}` (s6_primes.tex:83). -/
+/-- `t_k := ξ_0^{k5^k} θ^{5^k}` (s6_primes.tex:84). -/
 def H14_t (ξ0 θ : K) (j : ℕ) : K := ξ0 ^ (j * 5 ^ j) * θ ^ (5 ^ j)
 
 theorem H14_step2a (ξ0 θ : K) (k : ℕ) : ξ0 ^ ((k + 1) * 5 ^ (k + 1)) * θ ^ (5 ^ (k + 1)) =
@@ -390,7 +390,7 @@ section F4
 
 variable {n : ℕ} [NeZero n] {K : Type*} [Field K]
 
-/-- `c(r) := ∑_t (-1)^t y_t y_{r-t}` (s2_xia.tex:98). -/
+/-- `c(r) := ∑_t (-1)^t y_t y_{r-t}` (s2_xia.tex:101). -/
 def H14_C (y : ZMod n → K) (r : ZMod n) : K := ∑ t, sgn t * y t * y (r - t)
 
 /-- `S ∑_{2s = r} y_s`, the coefficient of `ŷ(-1) ŷ(ξ^2)`. -/
@@ -669,7 +669,7 @@ theorem sec_6_2_fourier_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 
 
 /-! ## Part K — Theorem 6.2, Step 2 (thm_6_2_step2), exact -/
 
-/-- Frobenius on `θ = ŷ(ξ_0)`: `θ^{Q_5} = -ι_5 θ` (s6_primes.tex:81-82). -/
+/-- Frobenius on `θ = ŷ(ξ_0)`: `θ^{Q_5} = -ι_5 θ` (s6_primes.tex:82-83). -/
 theorem H14_frob {K : Type*} [Field K] [CharP K 5] {n e : ℕ} [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : Odd e)
     {ω : K} (hω : IsPrimitiveRoot ω n) (y : ZMod n → K) (hL1 : L1 5 1 y) :
     dft ω y 1 ^ (5 ^ (n / 4)) = -ω ^ (n / 4) * dft ω y 1 := by
@@ -826,7 +826,7 @@ theorem H14_dftA_eq {n : ℕ} [NeZero n] (ξ0 : GaloisField 5 n) (y : ZMod n →
 
 end Top5
 
-/-! ## Part M — the layer recursion for `r = 5` (Steps 2-4 of s6_primes.tex:81-95): uniqueness and existence -/
+/-! ## Part M — the layer recursion for `r = 5` (Steps 2-4 of s6_primes.tex:82-96): uniqueness and existence -/
 
 section Fix5
 
@@ -1100,7 +1100,7 @@ theorem H14_bij (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : O
     simp only [paramMap]
     rw [← H4_S_eq_dft hn (by omega) hξ0, hyh, v1, vm, v0]
 
-/-- The first set has `Q_5 - 1` elements (a coset of `μ_{Q_5-1}`, s6_primes.tex:71-73). -/
+/-- The first set has `Q_5 - 1` elements (a coset of `μ_{Q_5-1}`, s6_primes.tex:72-74). -/
 theorem H14_theta_card {n e : ℕ} [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤ e) (heo : Odd e) (ξ0 : GaloisField 5 n)
     (hξ0 : IsPrimitiveRoot ξ0 n) :
     Nat.card {θ : GaloisField 5 n // θ ^ (5 ^ (n / 4) - 1) = -ξ0 ^ (n / 4)} = 5 ^ (n / 4) - 1 := by

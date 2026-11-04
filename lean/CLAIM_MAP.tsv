@@ -8,18 +8,18 @@
 3	Section 2.2 claims (Frobenius, L2 iff norms, R symmetry, Xia's equations)	sec_2_2_frobenius,sec_2_2_L2_iff,sec_2_2_R,sec_2_2_xia_eq	sec_2_2_norm
 4	Proposition 2.4	prop_2_4_bij,prop_2_4_F1,prop_2_4_F3,prop_2_4_F4,prop_2_4_more	fourier_inversion
 # NOT COUNTED (no mathematical claim): Remark 2.5 - shape analogy (N2); N3 - remarks on where hypotheses are used.
-6	Remark 2.6	rem_2_6	
+6	Remark 2.6 (+ P10s_main.tex:198: on a fibre Nm(y_j) = (lower-layer part of y_j)^2 - (top-layer part)^2)	rem_2_6,intro_norm_layers	
 7	Theorem 3.1	thm_3_1_bij,thm_3_1_card,thm_3_1_xi0,thm_3_1_theta_set	thm_3_1_step1,thm_3_1_step2,thm_3_1_step3,thm_3_1_step4,pow2_range
 8	Corollary 3.2	cor_3_2	
 9	Remark 3.3	rem_3_3	
 11	Theorem 3.4	thm_3_4_a,thm_3_4_b,thm_3_4_c,thm_3_4_d	eq_top_all_V,sec_3_2_setup,sec_3_2_V_card
-12	Corollary 3.5 (v2.70 (ii): "above each triple, that is, in each fibre of Theorem B")	cor_3_5_i,cor_3_5_ii,cor_3_5_fibre	
+12	Corollary 3.5 ((ii): "above each triple, that is, in each fibre of Theorem B")	cor_3_5_i,cor_3_5_ii,cor_3_5_fibre	
 13	Remark 3.6(a),(b)	rem_3_6	
 14	Theorem 4.1	thm_4_1_count,thm_4_1_pairs	thm_4_1_pow2,sec_4_1_homog,thm_4_1_descent,thm_4_1_step2,thm_4_1_step4,thm_4_1_step5,thm_4_1_step6,thm_4_1_step7
 15	Corollary 4.2	cor_4_2	
 16	Proposition 4.3	prop_4_3	prop_4_3_even,prop_4_3_odd
 17	Remark 4.4 (n = 80)	rem_4_4,rem_4_4_G	
-17N	Remark 4.4: other printed numbers (s4_normfree.tex:162-166, items (i)-(vi))	rem_4_4_N1,rem_4_4_N2,rem_4_4_N3,rem_4_4_N4,rem_4_4_N5,rem_4_4_N6	
+17N	Remark 4.4: other printed numbers (s4_normfree.tex:168-172, items (i)-(vi))	rem_4_4_N1,rem_4_4_N2,rem_4_4_N3,rem_4_4_N4,rem_4_4_N5,rem_4_4_N6	
 18	Theorem 5.1 (parts not tied to V)	thm_5_1_a,thm_5_1_b,thm_5_1_c_count,thm_5_1_c_yform,thm_5_1_d_yform	sec_5_setup,caseAB_even,fibre_not_linear
 18V	Theorem 5.1(c),(d): the space V, T, Y_0, Y_1	thm_5_1_c_V,thm_5_1_c_V_blocks,thm_5_1_d_V	caseB_delta
 19	Corollary 5.2	cor_5_2	
@@ -27,18 +27,18 @@
 21	Theorem 6.2	thm_6_2	thm_6_2_step1,thm_6_2_step2,thm_6_2_step3,thm_6_2_step4,thm_6_2_sets,sec_6_2_fourier,sec_6_1_R_kappa
 22	Corollary 6.3	cor_6_3	
 24	Theorem 6.4	thm_6_4	thm_6_4_pairs,thm_6_4_i,thm_6_4_ii,thm_6_4_step1,thm_6_4_step2,thm_6_4_step3,thm_6_4_step3b,thm_6_4_step45,thm_6_4_step67,sec_6_3_fourier
-24R	Remarks after Theorem 6.4 (r = 3, r = 5)	thm_6_4_remarks	
+24R	Remarks after Theorem 6.4 (s6_primes.tex:148-150: r = 3 with sigma_r a divisor of n, r = 5); P10s_main.tex:211 for r = 3 Xia's shift is the sigma of n (definitional)	thm_6_4_remarks,thm_6_4_r3	sigma_of_n
 25	Corollary 6.5	cor_6_5_sign_uncond,cor_6_5_solvable_uncond | cor_6_5	cor_6_5_sign,cor_6_5_solvable,xia_lemma_3_5
 26	Proposition 6.6	prop_6_6	prop_6_6_i,prop_6_6_ii
 27	Theorem A, last sentence	xia_sub_nf	
 A	Theorem A	thm_A	
 B	Theorem B (parts not tied to V)	thm_B_part	
-BV	Theorem B: the V sentences (P10s_main.tex:192-195; v2.60 "acts on the points of the fibre")	thm_B_V,thm_B_subst_fibre	
-C	Theorem C	thm_C	
+BV	Theorem B: the V sentences (P10s_main.tex:184-187; "acts on the points of the fibre")	thm_B_V,thm_B_subst_fibre	
+C	Theorem C (one L_i per pair {O, O^{-1}}: the common length)	thm_C,thm_6_4_pairs	
 I1	Introduction: sum form of (L2), deleting the norm equation	intro_sum_L2,intro_zero	
-I2	Introduction: planar difference sets n = 2, 8	intro_planar_2_8	
+I2	Introduction (P10s_main.tex:74): planar difference sets n = 2 (H = {1,2,4} in F_7), n = 8	intro_planar_2_8,intro_planar_H7	
 I3	Introduction: the conic is not a product	intro_conic_not_product	
-F1	Figure 1 caption (P10s_main.tex:136-142; "a solution would be a crossing" = sec_2_2_xia_eq + thm_B_xia_iff)	fig1_caption,sec_2_2_xia_eq,thm_B_xia_iff	
+F1	Figure 1 caption (P10s_main.tex:133-139; "A solution of Xia's system would be a crossing" = sec_2_2_xia_eq + thm_B_xia_iff)	fig1_caption,sec_2_2_xia_eq,thm_B_xia_iff	
 L1	Link L1 (after Cor 3.5)	link_L1	
 L2	Link L2 (after Cor 5.2)	link_L2	
 L3	Link L3 (Table 4)	link_L3	
@@ -46,14 +46,16 @@ S2m	s2_xia.tex:48-49: n = 8 mod 24 gives m = 4 mod 12, m/2 even, m = 1 mod 3	nit
 S4L	s4_normfree.tex:11-12: the top layer has m elements; Xi_a has 2^(a-1)	nit_s4_layers	
 17v	Remark 4.4 (added v1.90): n = 80 smallest with p prime (p = 6481); |D| = (3^4-1)^5	rem_4_4_v190	
 L3v	Table 4 caption (added v1.90): of the five values only n = 8, 80 make p prime	link_L3_v190	
-B2	Theorem B, n = 2^e sentence (P10s_main.tex:193): V = {x : x^{3^{n/4}} = -x}, point = yhat(xi_0), T(x) = xi_0^{n/4} x^{3^{n/8}}	thm_B_pow2_V	
-BI1	After Thm B (P10s_main.tex:213): top-layer part of y_0 (y_1) alone determines the V_+ (V_-) component	thm_B_components	
-BI2	After Thm B (P10s_main.tex:216): Xia solvable iff allowed eigencomponents add up to a fibre point	thm_B_xia_iff	thm_B_components
+B2	Theorem B, n = 2^e sentence (P10s_main.tex:185): V = {x : x^{3^{n/4}} = -x}, point = yhat(xi_0), T(x) = xi_0^{n/4} x^{3^{n/8}}	thm_B_pow2_V	
+BI1	After Thm B (P10s_main.tex:202-203): top-layer part of y_0 (y_1) alone determines the V_+ (V_-) component	thm_B_components	
+BI2	After Thm B (P10s_main.tex:206): Xia solvable iff an allowed V_+-component and an allowed V_--component add up to a fibre point	thm_B_xia_iff	thm_B_components
 I4	Introduction (P10s_main.tex:84): e a power of 3; four prime factors; e >= 3^8 given n >= 2*10^11 (hypothesis)	intro_e_pow3	
 S2s	s2_xia.tex:17: the sigma of Xia's proof is determined by n	sigma_of_n	
 T4s	Table 4 caption (s5_twonorms.tex:95-96): for n = 80 the sigma of n is 10, not 2	table4_sigma80	sigma_of_n
 L3c	Table 4 caption (s5_twonorms.tex:95): "a counterexample needs n >= 2*10^11" - CITED (Thas-Zagier), not formalized		
-P2a	s2_xia.tex:46, second part: for a plane of order n = 2^e the sigma of n is 2 (Lemma 2.2; n in Xia's range and p prime from P2b)	lem_2_2_sigma,lem_2_2_pow2	
+P2a	s2_xia.tex:46, second part: for a plane of order n = 2^e the sigma of n is 2 (Lemma 2.2; n in Xia's range and p prime from P2b); restated at s3_pow2.tex:5	lem_2_2_sigma,lem_2_2_pow2	
 P2b	s2_xia.tex:46, first part: a plane of order n = 2^e has n in Xia's range (Thm 2.1; restates claim 1) - CITED, not formalized		
-I5	P10s_main.tex:182: the sigma of n is 2 when n = 2^e (Lemma 2.2), 10 for n = 80	lem_2_2_sigma,table4_sigma80	sigma_of_n
+I5	P10s_main.tex:174: the sigma of n is 2 when n = 2^e >= 8 with p prime (Lemma 2.2: lem_2_2_pow2 gives n = 8 mod 24, then lem_2_2_sigma), 10 for n = 80	lem_2_2_sigma,lem_2_2_pow2,table4_sigma80	sigma_of_n,intro_e_pow3,pow2_range
+I6	P10s_main.tex:174 (and s2_xia.tex:37): n/sigma is the order of 3 in F_p^x/H	intro_sigma_order	sigma_of_n
+F2	Figure 2 caption (s4_normfree.tex:72): layers of mu_80, ten top orbits of length 4 in five inverse pairs, one case-A block and two case-C blocks, squaring maps layers onto the layer below; right column = Table 2 entries (not counted again)	fig2_layers,rem_4_4_N1,rem_4_4	
 S2c	s2_xia.tex:17-18: by Thm 2.1 and its proof, no solution for n and the sigma of n excludes planes of order n - CITED, not formalized		

@@ -628,9 +628,9 @@ theorem H20_fourier_general {n : ℕ} [NeZero n] {F : Type*} [Field F] [Finite F
     apply hinj
     rw [map_pow, ← H20_S_map, hS, H20_kappa_map]
 
-/-! ## The target (row: Coverage — s6_primes.tex:131-135) -/
+/-! ## The target (row: Coverage — s6_primes.tex:132-136) -/
 
-/-- Coverage — s6_primes.tex:131-135 (Fourier form, every `r`): `n = 2^a n_odd`, `a ≥ 3`, `r` prime, `r ∤ pn`, any
+/-- Coverage — s6_primes.tex:132-136 (Fourier form, every `r`): `n = 2^a n_odd`, `a ≥ 3`, `r` prime, `r ∤ pn`, any
 integer `σ_r`: `y ↦ ŷ` is a bijection from the norm-free `r`-system onto the functions with (F1_r), (F3_r), (F4_r), and
 (F3_r) at `-1` gives `S^2 = κ`. -/
 theorem sec_6_3_fourier_proved (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a)
@@ -649,7 +649,7 @@ theorem sec_6_3_fourier_proved (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn 
     (H20_shift_period n σr) h4 hrn ω hω
   exact ⟨hB, fun y hy => hS y hy⟩
 
-/-! ## BONUS: the `r = 5` row (s6_primes.tex:50-61) as an instance of the general theorem -/
+/-! ## BONUS: the `r = 5` row (s6_primes.tex:51-62) as an instance of the general theorem -/
 
 /-- Exact copy of `Xia.Paper.sec_6_2_fourier` (Coverage — Fourier form for `r = 5`), derived from
 `H20_fourier_general` with `F = F_{5^n}`, `N = n`, `σ = 1`. Named `H20_…` to avoid name clashes. -/

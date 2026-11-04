@@ -30,7 +30,7 @@ theorem H25_layer_facts : ∀ k ∈ layer0' 80 4, 3 * k ∈ layer0' 80 4 ∧ 3 *
 
 /-! ## 1. Row rem_4_4_N1 — the top orbits over `α = 1` and over `α ≠ 1` -/
 
-/-- Row rem_4_4_N1 — Remark 4.4 (s4_normfree.tex:161-162, v1.70): "Here `a = 4`, `n_odd = 5`. Over `α = 1` there are two
+/-- Row rem_4_4_N1 — Remark 4.4 (s4_normfree.tex:168-169): "Here `a = 4` and `n_odd = 5`; ... Over `α = 1` there are two
 top orbits of length `4` (one pair), and over `α ≠ 1` eight (four pairs)". Exponent model: `ξ = ω^k` (`k` odd) lies over
 `α = ω^{16k}`, so "over `α = 1`" is `16k = 0` in `ℤ/80`; a pair `{O, O^{-1}}` lies over `α = 1` iff all its elements do.
 Every top orbit has length `4`. -/
@@ -66,7 +66,7 @@ theorem H25_orbit2_eq (k : ZMod 80) (hk : (16 : ZMod 80) * k = k) :
   · rintro ⟨i, -, rfl⟩
     exact ⟨i, rfl⟩
 
-/-- Row rem_4_4_N2 — Remark 4.4 (s4_normfree.tex:162, v1.70): "On layer `0`, `⟨2⟩ = ⟨3⟩ = (ℤ/5)^×` is one orbit":
+/-- Row rem_4_4_N2 — Remark 4.4 (s4_normfree.tex:169): "On layer `0`, `⟨2⟩ = ⟨3⟩ = (ℤ/5)^×` is one orbit":
 every non-zero residue mod `5` is a power of `2` and a power of `3`; and on `μ_5 ∖ {1}` (exponent model
 `layer0' 80 4`), the orbit of every `α` under squaring (`k ↦ 2k`) and under cubing (`k ↦ 3k`) is all of `μ_5 ∖ {1}`. -/
 theorem rem_4_4_N2_proved :
@@ -145,7 +145,7 @@ theorem H25_bij_at (β : ZMod 80) (hβ : β ∈ layer0' 80 4) :
 
 end N80
 
-/-- Row rem_4_4_N3 — Remark 4.4 (s4_normfree.tex:162-163, v1.70): "`G` consists of the `g` with `g(β) ∈ μ_80`,
+/-- Row rem_4_4_N3 — Remark 4.4 (s4_normfree.tex:169-170): "`G` consists of the `g` with `g(β) ∈ μ_80`,
 `g(β)^{-1} = g(β)^9`" (`G` of Step 5, `β ∈ μ_5 ∖ {1}`): for every `β`, `g ↦ g(β)` is a bijection from `G` onto
 `{t : t^80 = 1, t^{-1} = t^9}` (algebraically closed `L` of characteristic 3, as in row rem_4_4_G). -/
 theorem rem_4_4_N3_proved {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] :
@@ -210,7 +210,7 @@ theorem H25_pow30 {ω : L} (hω1 : ω ^ 80 = 1) {f : ZMod 80 → L}
 
 end Gp
 
-/-- Row rem_4_4_N4 — Remark 4.4 (s4_normfree.tex:163-164, v1.70): "for `f_0 ∈ G'`, (E2) and (E3) give
+/-- Row rem_4_4_N4 — Remark 4.4 (s4_normfree.tex:170-171): "for `f_0 ∈ G'`, (E2) and (E3) give
 `f_0(α)^{10} = α^{-1}` and `τf_0/f_0 = f_0^6`" (`G'` with `σ = 2`, `κ = 1` as in Step 5 of Theorem 4.1; `α = ω^k` runs
 over `μ_5 ∖ {1}`; both sides of the second identity are `1` off `μ_5 ∖ {1}`). -/
 theorem rem_4_4_N4_proved {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω : L) (hω : IsPrimitiveRoot ω 80) :
@@ -359,7 +359,7 @@ theorem H25_image [CharP L 3] [IsAlgClosed L] {ω : L} (hω : IsPrimitiveRoot ω
 
 end Ext
 
-/-- Row rem_4_4_N5 — Remark 4.4 (s4_normfree.tex:163-165, v1.70): "The extendable top data satisfy `P(α)^5 = α^2` ...,
+/-- Row rem_4_4_N5 — Remark 4.4 (s4_normfree.tex:170-172): "The extendable top data satisfy `P(α)^5 = α^2` ...,
 which holds for half of the `10` possible values of `P(α)`". Reading: a top datum `h ∈ 𝒟` (Step 2, `σ = 2`, `κ = 1`) is
 extendable iff some `f ∈ G'` satisfies (E1) `f(α^2) = P(α) f(α)` on `μ_5 ∖ {1}`, `P = P_h` of Step 4 (`Pmap`); this
 holds iff `P(α)^5 = α^2` on `μ_5 ∖ {1}`; and for each `α ∈ μ_5 ∖ {1}` the values of `P(α)` over all top data form a set
@@ -477,7 +477,7 @@ theorem H25_count [CharP L 3] [IsAlgClosed L] {ω : L} (hω : IsPrimitiveRoot ω
 
 end Count
 
-/-- Row rem_4_4_N6 — Remark 4.4 (s4_normfree.tex:165, v1.70): "each such top datum extends in `2` ways at `α ≠ 1`:
+/-- Row rem_4_4_N6 — Remark 4.4 (s4_normfree.tex:172): "each such top datum extends in `2` ways at `α ≠ 1`:
 `80^5 · 1/2 · 2 · 4 = 4 · 80^5`". Reading: for every top datum with `P(α)^5 = α^2` on `μ_5 ∖ {1}` there are exactly `2`
 maps `f ∈ G'` with (E1); the factor `80^5 · 1/2` is the number of such top data (half of `|𝒟| = 80^5`); and the
 arithmetic identity. -/
@@ -498,7 +498,7 @@ theorem rem_4_4_N6_proved {L : Type*} [Field L] [CharP L 3] [IsAlgClosed L] (ω 
 
 /-! ## 6. Rows nit_s2_m, nit_s4_layers -/
 
-/-- Row nit_s2_m — s2_xia.tex:46-47 (v1.70): "In that subsection `m := n/2 ≡ 4 (mod 12)`, so `m/2` is even and
+/-- Row nit_s2_m — s2_xia.tex:48-49: "Then `m := n/2 ≡ 4 (mod 12)`, so `m/2` is even and
 `m ≡ 1 (mod 3)`" (the subsection's standing hypothesis: `n ≡ 8 (mod 24)`). -/
 theorem nit_s2_m_proved (n : ℕ) (hn : n % 24 = 8) : (n / 2) % 12 = 4 ∧ Even (n / 2 / 2) ∧ (n / 2) % 3 = 1 :=
   ⟨by omega, Nat.even_iff.mpr (by omega), by omega⟩
@@ -570,7 +570,7 @@ theorem H25_Xi_card {n a nodd : ℕ} [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 1 
   have := Nat.eq_of_mul_eq_mul_left hnodd hxy'
   omega
 
-/-- Row nit_s4_layers — s4_normfree.tex:11-12 (v1.70), standing hypotheses of Section 4 (`n = 2^a n_odd`, `a ≥ 3`,
+/-- Row nit_s4_layers — s4_normfree.tex:11-12, standing hypotheses of Section 4 (`n = 2^a n_odd`, `a ≥ 3`,
 `n_odd` odd, `3 ∤ n`): "The top layer is `𝓛_a := {ξ : j(ξ) = a}`, of size `m`, ... Let `Ξ_a` be the set of the `2^{a-1}`
 elements of order `2^a` of `μ_{2^a}`." Exponent model: `𝓛_a = topLayer n` (odd `k`); `Ξ_a` = the `k` with `2^a k = 0` and
 `2^{a-1} k ≠ 0` (the filter of row thm_6_4_step3b). -/
@@ -582,7 +582,7 @@ theorem nit_s4_layers_proved (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd)
   have h2 : 2 ∣ n := hn ▸ Dvd.dvd.mul_right (dvd_pow_self 2 (by omega)) _
   exact ⟨H6_card_topLayer h2, H25_Xi_card hn (by omega) hodd⟩
 
-/-! ## 7. Rows rem_4_4_v190, link_L3_v190 (paper v1.90) -/
+/-! ## 7. Rows rem_4_4_v190, link_L3_v190 (sentences added in v1.90) -/
 
 theorem H25_pp32 : pp 32 = 7 * 151 := by norm_num [pp]
 
@@ -590,8 +590,8 @@ theorem H25_pp56 : pp 56 = 31 * 103 := by norm_num [pp]
 
 theorem H25_pp104 : pp 104 = 67 * 163 := by norm_num [pp]
 
-/-- Row rem_4_4_v190 — Remark 4.4 in v1.90 (v190 s4_normfree.tex:162-163): "`n = 80` is the smallest `n > 8` in Xia's
-range with `p` prime (`p = 6481`)" and "`|𝒟| = (3^4-1)^5 = 80^5`" (Xia's range: `n ≡ 8 (mod 24)`, s2_xia.tex:45;
+/-- Row rem_4_4_v190 — Remark 4.4 (added in v1.90; s4_normfree.tex:168-169): "`n = 80` is the smallest `n > 8` in Xia's
+range with `p` prime (`p = 6481`)" and "`|𝒟| = (3^4-1)^5 = 80^5`" (Xia's range: `n ≡ 8 (mod 24)`, s2_xia.tex:46;
 `|𝒟| = ∏_i (3^{L_i}-1) = pairProd 80 3`, as in row rem_4_4). The non-printed witnesses `pp 32 = 7·151`,
 `pp 56 = 31·103` are the lemmas H25_pp32, H25_pp56. -/
 theorem rem_4_4_v190_proved :
@@ -604,7 +604,7 @@ theorem rem_4_4_v190_proved :
   · rw [H25_pp32]; exact Nat.not_prime_mul (by norm_num) (by norm_num)
   · rw [H25_pp56]; exact Nat.not_prime_mul (by norm_num) (by norm_num)
 
-/-- Row link_L3_v190 — Table 4 caption in v1.90 (v190 s5_twonorms.tex:94-95): "Only `n = 8` and `n = 80` make
+/-- Row link_L3_v190 — Table 4 caption (added in v1.90; s5_twonorms.tex:94-95): "Of these five values, only `n = 8` and `n = 80` make
 `p = n^2+n+1` prime" (among the table's `n = 8, 32, 56, 80, 104`). The non-printed witnesses `pp 32 = 7·151`,
 `pp 56 = 31·103`, `pp 104 = 67·163` are H25_pp32, H25_pp56, H25_pp104. -/
 theorem link_L3_v190_proved :

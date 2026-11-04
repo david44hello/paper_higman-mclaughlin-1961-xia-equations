@@ -210,7 +210,7 @@ theorem thm_5_1_c_V_proved (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (
     fun h h' => rfl, H26_Tsh_Tsh hev, fun h hh => ⟨H26_Tsh_mem h2 h4 hω hνper hh, H26_nuData_Tsh hev h⟩,
     fun y' hy' => ⟨hmemV y' hy', hsub y' hy'⟩, hinj, himg⟩
 
-/-! ## Coverage — case B: `δ_O ∈ F_{q_O}` (s5_twonorms.tex:146-148) -/
+/-! ## Coverage — case B: `δ_O ∈ F_{q_O}` (s5_twonorms.tex:145-147) -/
 
 /-- The exponent identity behind `δ_O^{q_O} = δ_O`: with `u = ρ^{-1}`, `s = t_0^{-1}`, `u^{q+1} = -1`, `N` even and
 `s^{q^2} u^{2N} = s` (the inverse of `t_0^{3^N} = ρ^{-2N} t_0`, `q^2 = 3^N`). -/

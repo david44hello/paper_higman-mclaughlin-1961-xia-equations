@@ -74,7 +74,7 @@ theorem H7_neg_one_zpow {L : Type*} [Field L] (r : ℕ) (hr : Odd r) (σ : ℤ) 
   · rw [zpow_natCast, Int.natAbs_natCast]
   · rw [zpow_neg, zpow_natCast, Int.natAbs_neg, Int.natAbs_natCast, ← inv_pow, inv_neg_one]
 
-/-! ## Coverage — s2_xia.tex:50-51 (sec_2_2_norm) -/
+/-! ## Coverage — s2_xia.tex:52-53 (sec_2_2_norm) -/
 
 /-- In `F = F_{3^{n/2}}`, `4 ∣ n`: `(y^Q)^Q = y`, `Q = 3^{n/4}`. -/
 theorem H7_pow_QQ (n : ℕ) (h4 : 4 ∣ n) (y : GaloisField 3 (n / 2)) :
@@ -97,7 +97,7 @@ theorem sec_2_2_norm_proved (n : ℕ) (h4 : 4 ∣ n) (x : GaloisField 3 (n / 2))
   refine ⟨hNm, ?_, hbb x⟩
   rw [hNm, hmul, hbb, mul_comm]
 
-/-! ## Coverage — s3_pow2.tex:88 (sec_3_2_V_card) -/
+/-! ## Coverage — s3_pow2.tex:87 (sec_3_2_V_card) -/
 
 /-- A set of solutions of `x^Q = c x` (`Q ≥ 2`) in a field has at most `Q` elements. -/
 theorem H7_card_le {F : Type*} [Field F] (Q : ℕ) (hQ : 2 ≤ Q) (c : F) (s : Set F)
@@ -178,7 +178,7 @@ theorem sec_3_2_V_card_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 �
   show Nat.card f.ker = 3 ^ (n / 4)
   omega
 
-/-! ## Coverage — s6_primes.tex:71-73 (thm_6_2_sets) -/
+/-! ## Coverage — s6_primes.tex:72-74 (thm_6_2_sets) -/
 
 theorem H7_factor (Q : ℕ) (hQ : 1 ≤ Q) : Q ^ 4 - 1 = (Q - 1) * (Q + 1) * (Q ^ 2 + 1) := by
   obtain ⟨t, rfl⟩ : ∃ t, Q = t + 1 := ⟨Q - 1, by omega⟩
@@ -249,7 +249,7 @@ theorem thm_6_2_sets_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 3 ≤
       · rw [← pow_mul, show M * c * (5 ^ (n / 4) - 1) = i by rw [hi']; ring, hi]
   · rw [Even.neg_pow ⟨2, by norm_num⟩, ← pow_mul, Nat.div_mul_cancel h4, hξ0.pow_eq_one]
 
-/-! ## Coverage — P10s_main.tex:170, s5_twonorms.tex:22 (caseAB_even) -/
+/-! ## Coverage — P10s_main.tex:178, s5_twonorms.tex:22 (caseAB_even) -/
 
 /-- A finite set with a fixed-point-free involution has even size. -/
 theorem H7_even_card_of_invol {α : Type*} (s : Finset α) (g : α → α)

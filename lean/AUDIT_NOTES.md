@@ -6,21 +6,22 @@ text; one of Xia's results proved in our setting (section E); or a weaker form k
 say what the paper says. `AUDIT.md` lists every row and every printed claim with the status that Lean itself reports.
 
 ## 0. Status
-- All 134 rows of `Xia/Paper/Statements.lean` are proved. Lean reports only the standard axioms `propext`,
-  `Classical.choice`, `Quot.sound`; the sources contain no `axiom` and no `sorry`. Rows: 127 PROVED, 7 PROVED GIVEN
+- All 139 rows of `Xia/Paper/Statements.lean` are proved. Lean reports only the standard axioms `propext`,
+  `Classical.choice`, `Quot.sound`; the sources contain no `axiom` and no `sorry`. Rows: 132 PROVED, 7 PROVED GIVEN
   (the given hypotheses are named results of Xia, section E), 0 OPEN.
-- Printed claims (`CLAIM_MAP.tsv`; a claim counts once, with its strongest proved form): 53 = 48 PROVED + 1 PROVED GIVEN
+- Printed claims (`CLAIM_MAP.tsv`; a claim counts once, with its strongest proved form): 55 = 50 PROVED + 1 PROVED GIVEN
   (Proposition 6.1, given only Xia's Proposition 1.2) + 4 lines that restate two cited results, which are quoted and not
   formalized (section F). Not counted, as they make no mathematical claim: Remark 2.5 (an analogy with Gauss sums), the
   remarks on where hypotheses are used (note N3 in Statements), the introduction's account of cited work (Kantor, Feit,
-  Jungnickel and Vedder, Ho and Pott, K. Thas, Gordon, Mills and Welch, Thas and Zagier; P10s_main.tex:72-80), which reports
+  Jungnickel and Vedder, Ho and Pott, K. Thas, Gordon, Mills and Welch, Thas and Zagier; P10s_main.tex:70-83), which reports
   results of other papers, and the scope sentences "Our results do not exclude any of
   these orders" and "Whether one exists for some n > 8 is open" (Figure 1).
 - The built tree was re-checked by seven kernel checks (`scripts/kernel_replay.sh`): Lean's own checker `leanchecker`
   (olean replay of every module; on an export also in paranoid mode) and the independent checkers lean4lean, nanoda,
   con-leche and con-ron. The files in this folder differ from the checked ones in comments only.
-- Pointers `file:line` are lines of the TeX sources (P10s_main.tex, s2_xia.tex, ..., s6_primes.tex) of version 2.70 of
-  the paper.
+- Pointers `file:line`, in `Xia/Paper/Statements.lean`, in the comments of `Xia/Defs` and `Xia/Proofs`, in
+  `CLAIM_MAP.tsv` and in these notes, are lines of the TeX sources (P10s_main.tex, s2_xia.tex, ..., s6_primes.tex) of
+  version 3.70 of the paper.
 
 ## A. The exponent model of the n-th roots of unity
 The paper works with functions on `μ_n` (the n-th roots of unity in an algebraically closed field of characteristic r).
@@ -94,8 +95,12 @@ paper's single algebraic closure. Characters may take values in any field (Xia u
 ## H. Claims added between the first formalized text (v1.70) and the final text
 New rows: `thm_B_subst_fibre`, `thm_B_pow2_V`, `thm_B_components`, `thm_B_xia_iff`, `intro_e_pow3`, `sigma_of_n`,
 `table4_sigma80`, `cor_3_5_fibre` (Corollary 3.5(ii): "above each triple (ν, S, ŷ(1)), that is, in each fibre of
-Theorem B"), and earlier `rem_4_4_v190`, `link_L3_v190`, `link_L1` (n = 128). All other edits were wording; no earlier
-row's statement changed. "So the bound does not apply to a plane of order 80" (Table 4): the bound's rows assume σ = 2,
+Theorem B"), `thm_6_4_r3` (remark after Theorem 6.4: for r = 3 and σ_r a divisor of n, the system in characteristic 3
+is the norm-free system with shift σ_r), `fig2_layers` (the caption of Figure 2: the layers of μ_80, its ten top orbits, five
+pairs and three blocks), `intro_planar_H7` (H = {1, 2, 4} in F_7), `intro_sigma_order` (n/σ is the order of 3 in F_p^×/H),
+`intro_norm_layers` (after Theorem B: Nm(y_j) is the square of the lower-layer part of y_j minus the square of its top-layer
+part, and the lower-layer parts are constant on a fibre; stated for every n ≡ 8 (mod 24) with σ = 2), and earlier
+`rem_4_4_v190`, `link_L3_v190`, `link_L1` (n = 128). All other edits were wording; no earlier row's statement changed. "So the bound does not apply to a plane of order 80" (Table 4): the bound's rows assume σ = 2,
 and `table4_sigma80` shows σ = 10 for n = 80.
 
 ## I. Superseded rows (kept)

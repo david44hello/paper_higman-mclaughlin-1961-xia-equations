@@ -295,7 +295,7 @@ end Generic
 
 /-! ## 2. eq:top-all-V (row 11e), EXACT -/
 
-/-- Row 11e — equation (eq:top-all-V) (s3_pow2.tex:169-174), `n = 2^e`, `e ≥ 4`: for `ν` with `ν^{q-1} = -1` and every `x ∈ V`,
+/-- Row 11e — equation (eq:top-all-V) (s3_pow2.tex:168-173), `n = 2^e`, `e ≥ 4`: for `ν` with `ν^{q-1} = -1` and every `x ∈ V`,
 with `h_x(ξ_0^{3^k}) := ξ_0^{2k3^k} x^{3^k}` and `h_x(ξ_0^{-3^k}) := -ξ_0^{-2k3^k} ν^{-3^k} x^{q3^k}` on `O ∪ O^{-1}`
 (`k < m/2`): `n^{-1} ∑ h_x(ξ) = n^{-1} Λ_ν(x + Tx)` and `n^{-1} ∑ h_x(ξ) ξ^{-1} = n^{-1} Λ'_ν(x - Tx)`; and for a parameter
 `θ` with `θ^{1+q} = ν`, `h_θ = ŷ` on `O ∪ O^{-1}` (any solution `y` with `ŷ(ξ_0) = θ`). -/
@@ -392,7 +392,7 @@ theorem H13_yPlus_eq {e : ℕ} (hne : n = 2 ^ e) (he : 3 ≤ e) (y : ZMod n → 
 
 end B
 
-/-- Row 11b — Theorem 3.4(b) (s3_pow2.tex:109-112): for every solution, with `θ = ŷ(ξ_0)` and `ν = θ^{1+q}`,
+/-- Row 11b — Theorem 3.4(b) (s3_pow2.tex:108-111): for every solution, with `θ = ŷ(ξ_0)` and `ν = θ^{1+q}`,
 `y_0^- = n^{-1} Λ_ν(θ + Tθ)` and `y_1^- = n^{-1} Λ'_ν(θ - Tθ)`. EXACT (Fourier inversion proved here, H13_inversion). -/
 theorem thm_3_4_b_proved (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
     (hξ0 : IsPrimitiveRoot ξ0 n) (y : ZMod n → GaloisField 3 (n / 2)) (hy : y ∈ NFSet n 2) :
@@ -473,7 +473,7 @@ theorem H13_div_two {m : ℕ} (x : GaloisField 3 m) : x / 2 = -x := by
 theorem H13_bar_eq {m : ℕ} (n : ℕ) (x : GaloisField 3 m) : bar n x = yPlus n x - yMinus n x := by
   linear_combination H9_split n x - H9_two_yPlus n x
 
-/-- The lower-layer values `ŷ(k)`, `k` even, depend only on `(ν, S, ŷ(1))` (proof of Thm 3.4(c), s3_pow2.tex:180-186):
+/-- The lower-layer values `ŷ(k)`, `k` even, depend only on `(ν, S, ŷ(1))` (proof of Thm 3.4(c), s3_pow2.tex:179-184):
 the top-layer values enter the layer recursion only through `ŷ(ρ)ŷ(-ρ) = ŷ(ρ)ŷ(ρ^q)`, a function of `ν`. Formally:
 `k ↦ (ŷ' on odd k, ŷ on even k)` is a fixed point of the recursion of `y'`, hence equals `ŷ'` (H4_fix_unique). -/
 theorem H13_even_agree (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : GaloisField 3 (n / 2))
@@ -667,8 +667,8 @@ theorem H13_c_D (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 4 ≤ e) (ξ0 : G
 
 end C
 
-/-- Row 11c — Theorem 3.4(c) (s3_pow2.tex:113-116) and its proof's identity (:176, :205): `θ^{1+q} = -ι θ T(θ)` for
-every `θ ∈ V`, i.e. `θ_+^2 - θ_-^2 = ιν` with `θ_± = (θ ± Tθ)/2 ∈ V_±` (and `θ + Tθ = -θ_+`, `θ - Tθ = -θ_-`, :122);
+/-- Row 11c — Theorem 3.4(c) (s3_pow2.tex:112-115) and its proof's identity (:175, :204): `θ^{1+q} = -ι θ T(θ)` for
+every `θ ∈ V`, i.e. `θ_+^2 - θ_-^2 = ιν` with `θ_± = (θ ± Tθ)/2 ∈ V_±` (and `θ + Tθ = -θ_+`, `θ - Tθ = -θ_-`, :121);
 `y_0^+`, `y_1^+` depend only on `(ν, S, ŷ(1))`; `y_0` only on `(ν, S, ŷ(1), θ_+)`, `y_1` only on `(ν, S, ŷ(1), θ_-)`;
 `T` sends parameters to parameters and keeps `ν`; `y_0(Tθ) = y_0(θ)` and `y_1(Tθ) = \overline{y_1(θ)}` (same signs).
 EXACT ((F1), (F3), (F4) of `ŷ` are derived here from (L1), (L3)+`R(m)=1`, (L4); inversion is proved here). -/
@@ -1003,7 +1003,7 @@ theorem H13_ii_count (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (he
 
 end Cor
 
-/-- Row 12a — Corollary 3.5(i) (s3_pow2.tex:128-133): `n = 2^e`, `e ≥ 5` odd. Xia's system with `σ = 2` has a solution
+/-- Row 12a — Corollary 3.5(i) (s3_pow2.tex:127-132): `n = 2^e`, `e ≥ 5` odd. Xia's system with `σ = 2` has a solution
 iff there are `ν` with `ν^{q-1} = -1`, signs `S`, `ŷ(1)`, and `(θ_+, θ_-) ∈ V_+ × V_-` on the conic
 `θ_+^2 - θ_-^2 = ιν` with `N(y_0^+ + n^{-1}Λ_ν(-θ_+)) = -1` and `N(y_1^+ + n^{-1}Λ'_ν(-θ_-)) = -1`, where `y_0^+, y_1^+`
 are the values determined by `(ν, S, ŷ(1))` (those of any norm-free solution with these data).
@@ -1064,7 +1064,7 @@ theorem cor_3_5_i_of (n e : ℕ) [NeZero n] (hne : n = 2 ^ e) (he : 5 ≤ e) (he
     · have e1 : θp + θm - (θp - θm) = -θm := by linear_combination θm * h3
       rw [← H9_split n (y' 1), hp1, hb'.2, hθ', hθν, hTθ, e1]; exact hn1
 
-/-- Row 12b — Corollary 3.5(ii) (s3_pow2.tex:134-136): above each triple `(ν, S, ŷ(1))` Xia's system (`σ = 2`) has at
+/-- Row 12b — Corollary 3.5(ii) (s3_pow2.tex:133-135): above each triple `(ν, S, ŷ(1))` Xia's system (`σ = 2`) has at
 most 4 solutions; if it has any, they are the orbit `{±θ_+ ± θ_-}` of `⟨T, θ ↦ -θ⟩` (so 0, 2 or 4 of them); in total
 at most `16(q-1) = 16(3^{n/8}-1)` solutions.
 PARAMETRIZED by `hP24` = row `prop_2_4_bij` (`L := F`, `ω := ξ0`, for every `hn`, `h3`). -/

@@ -660,7 +660,7 @@ theorem H16_NF_map {F K : Type*} [CommRing F] [CommRing K] (f : F →+* K) (hf :
   unfold NormFreeEqs L1 L3 L4
   simp only [e1, e3, eRm, e4]
 
-/-- Proposition 2.4 with shift `σ` (s4_normfree.tex:146-147): for `σ ∣ n`, `y ↦ ŷ` is a bijection from the norm-free
+/-- Proposition 2.4 with shift `σ` (s4_normfree.tex:153-154): for `σ ∣ n`, `y ↦ ŷ` is a bijection from the norm-free
 system with shift `σ` over `F_{3^{n/σ}}` onto the functions with (F1_σ), (F3), (F4). -/
 theorem H16_fourier_sigma (h4 : 4 ∣ n) (h3 : ¬ 3 ∣ n) (σ : ℕ) (hσ : σ ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / σ)) L] (ω : L) (hω : IsPrimitiveRoot ω n) :
@@ -895,7 +895,7 @@ theorem cor_4_2_of (n : ℕ) [NeZero n] (hn : n % 24 = 8)
       exact (Nat.pow_dvd_pow_iff_le_right (by norm_num)).mp (hcop.dvd_of_dvd_mul_right h8)
     exact (hThm41 a nodd hfac ha hodd (by omega)).2.1
 
-/-- Theorem A (P10s_main.tex:138-146), PROVED GIVEN row 16a (prop_4_3_even, for every even divisor `σ`); uses row 16b
+/-- Theorem A (P10s_main.tex:147-156), PROVED GIVEN row 16a (prop_4_3_even, for every even divisor `σ`); uses row 16b
 (prop_4_3_odd) and row 27 (xia_sub_nf). -/
 theorem thm_A_of (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (hodd : Odd nodd) (h3 : ¬ 3 ∣ n)
     (hP43e : ∀ σ : ℕ, σ ∣ n → Even σ → Nat.card (NFSet n σ) = 4 * pairProd n 3) :
@@ -908,7 +908,7 @@ theorem thm_A_of (n a nodd : ℕ) [NeZero n] (hn : n = 2 ^ a * nodd) (ha : 3 ≤
     rw [hP43e σ hσ he]; exact Nat.mul_pos (by norm_num) (H16_pairProd_pos hn ha)
   exact Set.nonempty_coe_sort.mp (Nat.card_pos_iff.mp hc).1
 
-/-- Row 16a — Proposition 4.3, even part (s4_normfree.tex:141-143), PROVED GIVEN the rows thm_4_1_step2 (14e),
+/-- Row 16a — Proposition 4.3, even part (s4_normfree.tex:148-150), PROVED GIVEN the rows thm_4_1_step2 (14e),
 thm_4_1_step5 (14g), thm_4_1_step6 (14h), thm_4_1_step7 (14i) (exact instances, `L` over `Type`). Route: in
 `L = \bar F_3 ⊇ F_{3^{n/σ}}`, a shift-2 solution `h` (Steps 2, 5, 6 + descent) and an explicit shift-0 solution `g`
 (top data `χ = ±1` on the classes `±⟨3⟩ mod 2^a`, corrected by Step 6) give the shift-`σ` solution `h^{σ/2} g^{σ/2+1}`;

@@ -694,7 +694,7 @@ theorem H24_res_D0 (h2 : 2 ∣ n) {r : ℕ} (hr : Odd r) {lam : ZMod n → L} (h
   · have hk' : k ∉ topLayer n := by rw [H12_mem_topLayer]; exact Nat.not_odd_iff_even.mpr hk
     simp only [H12_res, ite_eq_right hk']
 
-/-! ### The descent (s4_normfree.tex:80-83), for `K` of `r` -/
+/-! ### The descent (s4_normfree.tex:86-89), for `K` of `r` -/
 
 theorem H24_descent (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a) (_hodd : Odd nodd) (h2 : 2 ∣ n) {r : ℕ}
     {lam : ZMod n → L} (hK : H24_K r lam) (hm1 : lam (half n) = 1) :
@@ -1060,7 +1060,7 @@ end Count
 
 /-! ## 6. Row 24d -/
 
-/-- Row 24d — proof of Theorem 6.4, Steps 6-7 (s6_primes.tex:183-184, "word for word"), algebraically closed `L` of
+/-- Row 24d — proof of Theorem 6.4, Steps 6-7 (s6_primes.tex:184-185, "word for word"), algebraically closed `L` of
 characteristic `r`: `Π : 𝒟^0 → G` is onto, `|(τ-1)G| · |G^τ| = |G|`, and the group of solutions of the homogeneous laws for `r`
 has `4 ∏_i (r^{L_i}-1)` elements. -/
 theorem thm_6_4_step67_proved (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n = 2 ^ a * nodd) (ha : 3 ≤ a)

@@ -317,7 +317,7 @@ theorem cor_6_5_sign_proved (n a nodd r : ℕ) [NeZero n] [Fact r.Prime] (hn : n
   rw [he.neg_one_pow, one_mul] at hXia35
   exact hXia35
 
-/-! ## Coverage — s6_primes.tex:43-48 -/
+/-! ## Coverage — s6_primes.tex:44-49 -/
 
 theorem sec_6_1_R_kappa_proved (n : ℕ) [NeZero n] (hn : Even n) {K : Type*} [CommRing K] (y : ZMod n → K) :
     (L3 ((n : K) * (1 - (pp n : K))) y → ∀ s, s ≠ half n → R y s = (n : K) * (1 - (pp n : K))) ∧

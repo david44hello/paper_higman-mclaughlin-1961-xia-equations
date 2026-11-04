@@ -198,7 +198,7 @@ end Omega
 
 /-! ## The auxiliary sequences `c(r)` and `d(r)` of the (F4) proof -/
 
-/-- `c(r) := ∑_t (-1)^t y_t y_{r-t}` (s2_xia.tex:99). -/
+/-- `c(r) := ∑_t (-1)^t y_t y_{r-t}` (s2_xia.tex:101). -/
 def H10_C {n : ℕ} [NeZero n] {K : Type*} [CommRing K] (z : ZMod n → K) (r : ZMod n) : K :=
   ∑ t, sgn t * z t * z (r - t)
 
@@ -591,14 +591,14 @@ theorem H10_mem_range {F L : Type*} [Field F] [Fintype F] [Field L] [Algebra F L
 
 /-! ## The statements -/
 
-/-- Coverage — s2_xia.tex:74, :76: the inversion formula and `S = ŷ(-1)`. -/
+/-- Coverage — s2_xia.tex:75, :77: the inversion formula and `S = ŷ(-1)`. -/
 theorem fourier_inversion_proved (n : ℕ) [NeZero n] (hn : Even n) {L : Type*} [Field L] (ω : L)
     (hω : IsPrimitiveRoot ω n) (hnL : (n : L) ≠ 0) (y : ZMod n → L) :
     (∀ t : ZMod n, y t = (n : L)⁻¹ * ∑ k : ZMod n, dft ω y k * ((ω ^ k.val)⁻¹) ^ t.val) ∧
       dft ω y (half n) = S y :=
   ⟨fun t => H10_inversion hω hnL y t, H10_dft_half hω hn y⟩
 
-/-- Row 4b — Proposition 2.4 (s2_xia.tex:86): (F1) is equivalent to (L1). -/
+/-- Row 4b — Proposition 2.4 (s2_xia.tex:87): (F1) is equivalent to (L1). -/
 theorem prop_2_4_F1_proved (n : ℕ) [NeZero n] (_hn : Even n) (h3 : ¬ 3 ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2)) :
     L1 3 2 y ↔ F1 3 2 ω (dftA ω y) := by
@@ -609,7 +609,7 @@ theorem prop_2_4_F1_proved (n : ℕ) [NeZero n] (_hn : Even n) (h3 : ¬ 3 ∣ n)
   refine forall_congr' (fun s => ?_)
   rw [Int.cast_ofNat, ← map_pow, (algebraMap (GaloisField 3 (n / 2)) L).injective.eq_iff]
 
-/-- Row 4c — Proposition 2.4 (s2_xia.tex:86): (F3) is equivalent to (L3) together with `R(m) = 1`. -/
+/-- Row 4c — Proposition 2.4 (s2_xia.tex:87): (F3) is equivalent to (L3) together with `R(m) = 1`. -/
 theorem prop_2_4_F3_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2)) :
     (L3 0 y ∧ R y (half n) = 1) ↔ F3 ω (dftA ω y) := by
@@ -622,7 +622,7 @@ theorem prop_2_4_F3_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) 
   · rw [← map_one (algebraMap (GaloisField 3 (n / 2)) L), (algebraMap (GaloisField 3 (n / 2)) L).injective.eq_iff]
   · rw [← map_zero (algebraMap (GaloisField 3 (n / 2)) L), (algebraMap (GaloisField 3 (n / 2)) L).injective.eq_iff]
 
-/-- Row 4d — Proposition 2.4 (s2_xia.tex:86): (F4) is equivalent to (L4). -/
+/-- Row 4d — Proposition 2.4 (s2_xia.tex:87): (F4) is equivalent to (L4). -/
 theorem prop_2_4_F4_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2)) :
     L4 y ↔ F4 (dftA ω y) := by
@@ -633,7 +633,7 @@ theorem prop_2_4_F4_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) 
   refine forall_congr' (fun r => ?_)
   rw [H10_map_C, H10_map_S, H10_map_D, ← map_mul, (algebraMap (GaloisField 3 (n / 2)) L).injective.eq_iff]
 
-/-- Row 4e — Proposition 2.4 (s2_xia.tex:86-88): for a solution, `ŷ` has no zero on `μ_n`,
+/-- Row 4e — Proposition 2.4 (s2_xia.tex:87-89): for a solution, `ŷ` has no zero on `μ_n`,
 `ŷ(ξ^{3^j}) = ξ^{2j3^j} ŷ(ξ)^{3^j}` for every `j ≥ 0`, and `S^2 = (-1)^m`. -/
 theorem prop_2_4_more_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) (y : ZMod n → GaloisField 3 (n / 2))
@@ -674,7 +674,7 @@ theorem prop_2_4_more_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n
     apply (algebraMap (GaloisField 3 (n / 2)) L).injective
     rw [map_pow, sq, hm, map_pow, map_neg, map_one]
 
-/-- Row 4a — Proposition 2.4 (s2_xia.tex:78-80): `y ↦ ŷ` is a bijection from the solutions of the norm-free system
+/-- Row 4a — Proposition 2.4 (s2_xia.tex:79-81): `y ↦ ŷ` is a bijection from the solutions of the norm-free system
 onto the functions `ŷ : μ_n → L` with (F1), (F3), (F4). -/
 theorem prop_2_4_bij_proved (n : ℕ) [NeZero n] (hn : Even n) (h3 : ¬ 3 ∣ n) {L : Type*} [Field L]
     [Algebra (GaloisField 3 (n / 2)) L] (ω : L) (hω : IsPrimitiveRoot ω n) :

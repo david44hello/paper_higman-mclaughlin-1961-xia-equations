@@ -10,7 +10,7 @@ section DFT
 
 variable {n : ℕ} [NeZero n] {L : Type*} [CommRing L]
 
-/-- `ŷ(ξ) := ∑_{t ∈ ℤ/n} y_t ξ^t` at `ξ = ω^k` (P10s_main.tex:136; s2_xia.tex:74). -/
+/-- `ŷ(ξ) := ∑_{t ∈ ℤ/n} y_t ξ^t` at `ξ = ω^k` (P10s_main.tex:145; s2_xia.tex:75). -/
 def dft (ω : L) (y : ZMod n → L) (k : ZMod n) : L := ∑ t, y t * (ω ^ k.val) ^ t.val
 
 /-- `ŷ` of a sequence `y ∈ F^n`, computed in an extension `L ⊇ F` that contains `μ_n`. -/
@@ -24,17 +24,17 @@ section Laws
 variable {n : ℕ} [NeZero n] {L : Type*} [Field L]
 
 /-- (F1_σ) with exponent `r` (`ξ = ω^k`): `ŷ(ξ^r) = ξ^{rσ} ŷ(ξ)^r`. `r = 3, σ = 2` is (F1) of Prop 2.4
-(s2_xia.tex:82); `r = 3` is (F1_σ) (s4_normfree.tex:148); general `r` is (F1_r) (s6_primes.tex:133). -/
+(s2_xia.tex:83); `r = 3` is (F1_σ) (s4_normfree.tex:155); general `r` is (F1_r) (s6_primes.tex:134). -/
 def F1 (r : ℕ) (σ : ℤ) (ω : L) (h : ZMod n → L) : Prop :=
   ∀ k : ZMod n, h ((r : ZMod n) * k) = (ω ^ k.val) ^ ((r : ℤ) * σ) * h k ^ r
 
-/-- (F3): `ŷ(ξ) ŷ(ξ^{-1}) = ξ^m` for all `ξ ∈ μ_n` (s2_xia.tex:83). -/
+/-- (F3): `ŷ(ξ) ŷ(ξ^{-1}) = ξ^m` for all `ξ ∈ μ_n` (s2_xia.tex:84). -/
 def F3 (ω : L) (h : ZMod n → L) : Prop := ∀ k : ZMod n, h k * h (-k) = (ω ^ k.val) ^ (n / 2)
 
-/-- (F4): `ŷ(ξ) ŷ(-ξ) = ŷ(-1) ŷ(ξ^2)` for all `ξ ∈ μ_n` (s2_xia.tex:84; = (F4_r)). -/
+/-- (F4): `ŷ(ξ) ŷ(-ξ) = ŷ(-1) ŷ(ξ^2)` for all `ξ ∈ μ_n` (s2_xia.tex:85; = (F4_r)). -/
 def F4 (h : ZMod n → L) : Prop := ∀ k : ZMod n, h k * h (k + half n) = h (half n) * h (2 * k)
 
-/-- (F3_r) with constant `κ`: `ŷ(ξ) ŷ(ξ^{-1}) = κ ξ^m` for `ξ ≠ 1`, and `ŷ(1)^2 = n^2` (s6_primes.tex:55, :133). -/
+/-- (F3_r) with constant `κ`: `ŷ(ξ) ŷ(ξ^{-1}) = κ ξ^m` for `ξ ≠ 1`, and `ŷ(1)^2 = n^2` (s6_primes.tex:56, :134). -/
 def F3r (κ : L) (ω : L) (h : ZMod n → L) : Prop :=
   (∀ k : ZMod n, k ≠ 0 → h k * h (-k) = κ * (ω ^ k.val) ^ (n / 2)) ∧ h 0 ^ 2 = (n : L) ^ 2
 
@@ -51,7 +51,7 @@ noncomputable def orbit (r : ℕ) (k : ZMod n) : Finset (ZMod n) :=
 
 variable (n) in
 /-- The top layer `𝓛_a` (exponent model): `ξ = ω^k` has order divisible by `2^a` iff `k` is odd
-(P10s_main.tex:133; s4_normfree.tex:11). -/
+(P10s_main.tex:143; s4_normfree.tex:11). -/
 def topLayer : Finset (ZMod n) := univ.filter (fun k => Odd k.val)
 
 variable (n) in
@@ -65,7 +65,7 @@ def inv (O : Finset (ZMod n)) : Finset (ZMod n) := O.image Neg.neg
 def negO (O : Finset (ZMod n)) : Finset (ZMod n) := O.image (· + half n)
 
 variable (n) in
-/-- The index set `I` of pairs `{O, O^{-1}}` of top orbits (P10s_main.tex:134; s4_normfree.tex:15). -/
+/-- The index set `I` of pairs `{O, O^{-1}}` of top orbits (P10s_main.tex:143-144; s4_normfree.tex:15). -/
 noncomputable def topPairs (r : ℕ) : Finset (Finset (Finset (ZMod n))) :=
   (topOrbits n r).image (fun O => {O, inv O})
 

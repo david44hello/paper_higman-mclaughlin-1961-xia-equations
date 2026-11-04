@@ -78,7 +78,7 @@ paper's single algebraic closure. Characters may take values in any field (Xia u
   with `hX12`).
 - Xia's Proposition 1.2 stays a hypothesis: it rests on Kantor's classification of flag-transitive planes (which uses the
   classification of finite simple groups) and on Thas and Zagier; `Plane` is uninterpreted.
-- Xia's σ (fixed in the proof of his Theorem 1.3, χ(3) = ϖ^σ) enters only as binders: `lem_2_2_sigma`, `sigma_of_n`
+- Xia's σ (fixed in the proof of Theorem 1.3 of Xia's paper, χ(3) = ϖ^σ) enters only as binders: `lem_2_2_sigma`, `sigma_of_n`
   ("this σ is determined by n"), `table4_sigma80` (σ = 10 for n = 80).
 
 ## F. Cited, not formalized

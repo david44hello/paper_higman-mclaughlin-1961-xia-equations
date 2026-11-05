@@ -1,5 +1,5 @@
 /- Xia/Proofs/BSubst.lean — proofs of the rows thm_B_subst_fibre, thm_B_pow2_V of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Proofs.VcV
 import Xia.Proofs.Sec5
 import Xia.Proofs.BPow2V

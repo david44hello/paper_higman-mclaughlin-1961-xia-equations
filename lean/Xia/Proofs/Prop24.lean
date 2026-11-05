@@ -1,5 +1,5 @@
 /- Xia/Proofs/Prop24.lean — proofs of the rows fourier_inversion, prop_2_4_F1, prop_2_4_F3, prop_2_4_F4, prop_2_4_more, prop_2_4_bij of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

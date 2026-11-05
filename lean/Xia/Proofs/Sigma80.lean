@@ -1,5 +1,5 @@
 /- Xia/Proofs/Sigma80.lean — proofs of the rows table4_sigma80 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Proofs.NumberTheory
 

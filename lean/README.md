@@ -23,4 +23,4 @@ PASS (final): project builds; source policy passes; the only gaps are the listed
 
 The Lean proof of Proposition 6.1 takes Xia's Proposition 1.2 (projective planes, not in Lean's library) as a stated hypothesis; Theorem 2.1 (Xia) and a bound of Thas and Zagier, which the paper cites, are quoted, not formalized; [AUDIT.md](AUDIT.md) and [AUDIT_NOTES.md](AUDIT_NOTES.md) name them.
 
-Copyright (C) Dave Goel 2026--now. All rights reserved.
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE.

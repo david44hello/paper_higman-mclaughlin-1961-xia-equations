@@ -1,5 +1,5 @@
 /- Xia/Proofs/FourierR.lean — proofs of the rows sec_6_3_fourier of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Proofs.Thm31
 import Xia.Proofs.Signs

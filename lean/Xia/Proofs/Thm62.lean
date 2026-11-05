@@ -1,5 +1,5 @@
 /- Xia/Proofs/Thm62.lean — proofs of the rows thm_6_4_remarks, H14_theta, H14_F3r, sec_6_2_fourier, thm_6_2_step2, thm_6_2 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Proofs.Thm31
 import Xia.Proofs.Coverage

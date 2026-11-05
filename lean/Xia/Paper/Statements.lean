@@ -1,6 +1,6 @@
 /-
 Xia/Paper/Statements.lean — one Lean theorem per claim of the paper "Xia's equations for the Higman–McLaughlin (1961)
-conjecture: exact counts and the two norm conditions" (Dave Goel). Copyright (C) Dave Goel 2026--now. All rights reserved.
+conjecture: exact counts and the two norm conditions" (Dave Goel). Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE.
 A claim with several parts has one row per part and a row for the printed conjunction. Pointers "file:line" are lines
 of the paper's TeX sources (P10s_main.tex, s2_xia.tex, ..., s6_primes.tex). Every row is proved; the status of each row
 and each printed claim, as Lean reports it, is in AUDIT.md; modelling choices are in AUDIT_NOTES.md.

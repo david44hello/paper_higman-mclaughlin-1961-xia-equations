@@ -1,5 +1,5 @@
 /- Xia/Proofs/VBlocks.lean — proofs of the rows thm_5_1_c_V_blocks of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.BlockSpace
 import Xia.Proofs.FibreCount
 

@@ -1,5 +1,5 @@
 /- Xia/Proofs/Sec22.lean — proofs of the rows sec_2_2_frobenius, sec_2_2_L2_iff, sec_2_2_R, sec_2_2_xia_eq, xia_sub_nf, intro_zero and 1 more of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

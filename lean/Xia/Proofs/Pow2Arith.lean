@@ -1,5 +1,5 @@
 /- Xia/Proofs/Pow2Arith.lean — proofs of the rows thm_3_1_xi0, thm_3_1_theta_set, thm_3_1_step1, sec_3_2_setup, rem_3_6, thm_4_1_pow2 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

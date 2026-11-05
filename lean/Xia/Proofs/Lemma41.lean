@@ -1,5 +1,5 @@
 /- Xia/Proofs/Lemma41.lean — proofs of the rows L10_hX41 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.DiffSet
 
 namespace Xia.Proofs

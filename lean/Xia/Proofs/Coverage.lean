@@ -1,5 +1,5 @@
 /- Xia/Proofs/Coverage.lean — proofs of the rows sec_2_2_norm, sec_3_2_V_card, thm_6_2_sets, caseAB_even, fibre_not_linear, intro_planar_2_8 and 3 more of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

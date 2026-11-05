@@ -1,5 +1,5 @@
 /- Xia/Defs/System.lean — definitions (sgn, half, R, S, L1, L2, L3, L4, ...).
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Mathlib
 
 namespace Xia

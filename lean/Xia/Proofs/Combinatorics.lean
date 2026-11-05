@@ -1,5 +1,5 @@
 /- Xia/Proofs/Combinatorics.lean — proofs of the rows thm_5_1_a, thm_5_1_b, thm_4_1_pairs, thm_6_4_pairs, cor_6_3, thm_6_2_step1 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

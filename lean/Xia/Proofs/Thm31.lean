@@ -1,5 +1,5 @@
 /- Xia/Proofs/Thm31.lean — proofs of the rows thm_3_1_step3, thm_3_1_step4, H4_theta, thm_3_1_step2, thm_3_1_bij, thm_3_1_card and 1 more of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

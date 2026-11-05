@@ -1,5 +1,5 @@
 /- Xia/Proofs/NumberTheory.lean — proofs of the rows lem_2_2_fourth_power, lem_2_2_sigma, pow2_range, lem_2_2_pow2, intro_sum_L2, thm_6_4_step1 and 1 more of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

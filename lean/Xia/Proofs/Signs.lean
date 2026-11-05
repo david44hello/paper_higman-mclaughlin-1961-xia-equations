@@ -1,5 +1,5 @@
 /- Xia/Proofs/Signs.lean — proofs of the rows prop_4_3_odd, thm_6_4_i, prop_6_6_i, cor_6_5_sign, sec_6_1_R_kappa, sec_4_1_homog_of of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

@@ -1,5 +1,5 @@
 /- Xia/Proofs/Fig2.lean — proofs of the rows fig2_layers, intro_planar_H7, intro_sigma_order of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Fig2
 import Xia.Proofs.Rem44
 import Xia.Proofs.Links

@@ -1,5 +1,5 @@
 /- Xia/Proofs/PrimRoot.lean — lemmas used by the proofs.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 
 namespace Xia.Proofs

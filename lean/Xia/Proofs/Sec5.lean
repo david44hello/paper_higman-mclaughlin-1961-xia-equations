@@ -1,5 +1,5 @@
 /- Xia/Proofs/Sec5.lean — proofs of the rows sec_5_setup, thm_5_1_c_yform, thm_5_1_d_yform, fig1_caption, cor_5_2, thm_B_part and 1 more of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Proofs.Combinatorics
 import Xia.Proofs.Coverage

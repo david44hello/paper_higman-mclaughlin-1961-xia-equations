@@ -1,5 +1,5 @@
 /- Xia/Proofs/Prop61Final.lean — proofs of the rows prop_6_1_from_diffset of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Proofs.Prop61Uncond
 import Xia.Proofs.Lemma41
 import Xia.Proofs.Thm34b

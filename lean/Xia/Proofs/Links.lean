@@ -1,5 +1,5 @@
 /- Xia/Proofs/Links.lean — proofs of the rows rem_4_4, link_L1, link_L2, link_L3 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Proofs.Combinatorics
 import Xia.Proofs.Pow2Arith

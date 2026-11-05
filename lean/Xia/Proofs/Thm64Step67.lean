@@ -1,5 +1,5 @@
 /- Xia/Proofs/Thm64Step67.lean — proofs of the rows thm_6_4_step67 of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Symmetry
 import Xia.Defs.Layer0
 import Xia.Proofs.Thm41Steps26

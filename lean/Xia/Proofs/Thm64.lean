@@ -1,5 +1,5 @@
 /- Xia/Proofs/Thm64.lean — proofs of the rows thm_6_4_step3b, prop_6_6_ii, thm_6_4_step2, thm_6_4_step45, thm_6_4_ii, cor_6_5_solvable of Xia/Paper/Statements.lean.
-Copyright (C) Dave Goel 2026--now. All rights reserved. -/
+Copyright (C) Dave Goel 2026--now. Licensed under the Apache License 2.0; see LICENSE. -/
 import Xia.Defs.Layer0
 import Xia.Proofs.Coverage
 import Xia.Proofs.Combinatorics
